@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundición · Mayco Company</title>
+  <meta name="description" content="Fundición de bronce en seis calidades SAE: barras, bujes, placas y piezas según modelo. Calculadora de peso aproximado y cotización en línea.">
+  <link rel="icon" href="../assets/img/logo-co.webp" type="image/webp">
+  <!-- Tipografías (propuesta D5, pendiente de aprobar): Kumbh Sans y Archivo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Kumbh+Sans:wght@400;500;700&amp;display=swap">
+  <!-- Estilos del proyecto, siempre en este orden -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="page page--fundicion">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- IA: generado · Header común (igual en todas las páginas con navegación) -->
+  <header class="site-header site-header--overlay">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="../index.html">
+        <img src="../assets/img/logo-co.webp" alt="Mayco Company, ir al inicio" width="64" height="39">
+      </a>
+
+      <button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="visually-hidden">Abrir menú</span>
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="menu-principal" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="maquinados.html">Maquinados</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="fundicion.html" aria-current="page">Fundición</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="osgRoyco.html">OSG Royco</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="aceros.html">Aceros</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="icon-link" href="user.html">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4.5"/><path d="M3.5 21c1.4-4.2 4.6-6.5 8.5-6.5s7.1 2.3 8.5 6.5"/></svg>
+          <span class="visually-hidden">Mi cuenta</span>
+        </a>
+        <a class="icon-link icon-link--cart" href="carrito.html">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 3h3l2.6 12.2a1.5 1.5 0 0 0 1.5 1.2h8.8a1.5 1.5 0 0 0 1.5-1.1L21.5 7H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/></svg>
+          <span class="visually-hidden">Carrito</span>
+          <span class="cart-count" data-cart-count hidden>0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- IA: generado · Hero -->
+    <section class="page-hero" aria-labelledby="page-titulo">
+      <!-- REVISAR: la foto original mide 678 px de ancho; puede verse pixelada a pantalla completa -->
+      <img class="page-hero__bg" src="../assets/img/hero-fundicion.webp" alt="" width="678" height="452" decoding="async">
+      <div class="page-hero__content container">
+        <h1 class="page-hero__title" id="page-titulo">Fundición</h1>
+        <p class="page-hero__subtitle">Bronce de diferentes calidades</p>
+        <div class="button-group">
+          <a class="btn btn--secondary" href="#calculadora">Calcular peso</a>
+          <a class="btn btn--primary" href="cotizacion.html">Solicitar cotización</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- IA: generado · Datos de la fundición -->
+    <section class="section" id="datos" aria-labelledby="datos-titulo">
+      <div class="container">
+        <h2 class="section__title" id="datos-titulo">Nuestra fundición en datos</h2>
+        <dl class="stats">
+          <div class="stats__item">
+            <dt class="stats__label">Calidades de bronce</dt>
+            <dd class="stats__value">6 SAE</dd>
+          </div>
+          <div class="stats__item">
+            <dt class="stats__label">Formas</dt>
+            <dd class="stats__value">Barra, buje y placa</dd>
+          </div>
+          <div class="stats__item">
+            <dt class="stats__label">Medidas</dt>
+            <dd class="stats__value">Pulgadas o mm</dd>
+          </div>
+          <div class="stats__item">
+            <dt class="stats__label">Tiempo de entrega</dt>
+            <dd class="stats__value">[PLACEHOLDER]</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- IA: generado · Tipos de bronce -->
+    <section class="section section--alt" aria-labelledby="tipos-titulo">
+      <div class="container">
+        <h2 class="section__title" id="tipos-titulo">Tipos de bronce</h2>
+        <ul class="card-grid card-grid--4">
+          <li class="type-card">
+            <img class="type-card__image" src="../assets/img/bronce-al-aluminio.webp" alt="" width="120" height="180" loading="lazy" decoding="async">
+            <h3 class="type-card__title">Bronce al aluminio</h3>
+            <p class="type-card__text">Muy resistente a la corrosión y al desgaste.</p>
+          </li>
+          <li class="type-card">
+            <img class="type-card__image" src="../assets/img/bronce-al-plomo.webp" alt="" width="120" height="180" loading="lazy" decoding="async">
+            <h3 class="type-card__title">Bronce al plomo</h3>
+            <p class="type-card__text">Autolubricante: ideal para bujes y cojinetes.</p>
+          </li>
+          <li class="type-card">
+            <img class="type-card__image" src="../assets/img/bronce-al-niquel.webp" alt="" width="120" height="180" loading="lazy" decoding="async">
+            <h3 class="type-card__title">Bronce al níquel</h3>
+            <p class="type-card__text">Buena resistencia mecánica y a la corrosión.</p>
+          </li>
+          <li class="type-card">
+            <img class="type-card__image" src="../assets/img/bronce-al-estano.webp" alt="" width="120" height="180" loading="lazy" decoding="async">
+            <h3 class="type-card__title">Bronce al estaño</h3>
+            <p class="type-card__text">Buena resistencia a la fatiga y al desgaste.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- IA: generado · Tabla de calidades -->
+    <section class="section" id="calidades" aria-labelledby="calidades-titulo">
+      <div class="container">
+        <h2 class="section__title" id="calidades-titulo">Calidades y precios</h2>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <caption class="data-table__caption">Precio de referencia por kilo, en pesos mexicanos más IVA</caption>
+            <thead>
+              <tr>
+                <th scope="col">Calidad</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Aplicaciones típicas</th>
+                <th scope="col">MXN / kg</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">SAE 62</th>
+              <td>Bronce al estaño</td>
+              <td>Bujes y piezas con carga media, válvulas y accesorios</td>
+              <td><data value="230">$230</data></td>
+            </tr>
+            <tr>
+              <th scope="row">SAE 64</th>
+              <td>Bronce al plomo</td>
+              <td>Bujes y cojinetes con poca lubricación o alta velocidad</td>
+              <td><data value="235">$235</data></td>
+            </tr>
+            <tr>
+              <th scope="row">SAE 65</th>
+              <td>Bronce fosforado</td>
+              <td>Coronas sinfín, engranes y piezas con carga alta</td>
+              <td><data value="235">$235</data></td>
+            </tr>
+            <tr>
+              <th scope="row">SAE 68</th>
+              <td>Bronce al aluminio</td>
+              <td>Piezas que necesitan resistencia al desgaste y a la corrosión</td>
+              <td><data value="220">$220</data></td>
+            </tr>
+            <tr>
+              <th scope="row">SAE 660</th>
+              <td>Bronce al plomo de uso general</td>
+              <td>Bujes y cojinetes de uso general</td>
+              <td><data value="230">$230</data></td>
+            </tr>
+            <tr>
+              <th scope="row">SAE 600</th>
+              <td>[PLACEHOLDER: tipo]</td>
+              <td>[PLACEHOLDER: aplicaciones]</td>
+              <td><data value="220">$220</data></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Tipos y aplicaciones orientativos. Los precios son fijos para este proyecto académico (decisión D7).</p>
+      </div>
+    </section>
+
+    <!-- IA: generado · Proceso de fundición -->
+    <section class="section section--alt" aria-labelledby="proceso-titulo">
+      <div class="container">
+        <h2 class="section__title" id="proceso-titulo">Del metal fundido a tu pieza</h2>
+        <ol class="process">
+          <li class="process__step">
+            <h3 class="process__title">Fusión</h3>
+            <p>Fundimos la aleación según la calidad SAE pedida.</p>
+          </li>
+          <li class="process__step">
+            <h3 class="process__title">Colada</h3>
+            <p>Vaciamos el bronce en el molde de la barra, el buje o la pieza.</p>
+          </li>
+          <li class="process__step">
+            <h3 class="process__title">Enfriado y desmoldeo</h3>
+            <p>La pieza se enfría y se limpia de arena y rebabas.</p>
+          </li>
+          <li class="process__step">
+            <h3 class="process__title">Maquinado de acabado</h3>
+            <p>Si lo necesitas, la dejamos a la medida final en nuestro taller.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- IA: generado · Calculadora de peso aproximado -->
+    <section class="section" id="calculadora" aria-labelledby="calc-titulo">
+      <div class="container calculator">
+        <div class="calculator__intro">
+          <h2 class="section__title" id="calc-titulo">Calculadora de peso aproximado</h2>
+          <p>Calcula cuánto pesa una barra, un buje o una placa de bronce antes de pedirla.</p>
+        </div>
+
+        <form class="calculator__form form" data-calculadora novalidate>
+          <fieldset class="form__group">
+            <legend class="form__legend">Forma de la pieza</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="forma" value="barra" checked> Barra</label>
+              <label class="choice"><input type="radio" name="forma" value="buje"> Buje</label>
+              <label class="choice"><input type="radio" name="forma" value="placa"> Placa</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form__group">
+            <legend class="form__legend">Unidades</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="unidad" value="in" checked> Pulgadas</label>
+              <label class="choice"><input type="radio" name="unidad" value="mm"> Milímetros</label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label class="field__label" for="calc-medidas">Medidas</label>
+            <input class="field__input" id="calc-medidas" name="medidas" type="text" placeholder="2 1/2 x 20" autocomplete="off" required aria-describedby="calc-medidas-ayuda calc-medidas-error">
+            <p class="field__hint" id="calc-medidas-ayuda">Barra: diámetro × largo · Buje: Ø exterior × Ø interior × largo · Placa: espesor × ancho × largo</p>
+            <p class="field__error" id="calc-medidas-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="calc-calidad">Calidad del bronce</label>
+            <select class="field__input" id="calc-calidad" name="calidad">
+              <option value="sae62">SAE 62</option>
+              <option value="sae64">SAE 64</option>
+              <option value="sae65">SAE 65</option>
+              <option value="sae68">SAE 68</option>
+              <option value="sae660">SAE 660</option>
+              <option value="sae600">SAE 600</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="calc-piezas">Número de piezas</label>
+            <input class="field__input" id="calc-piezas" name="piezas" type="number" min="1" step="1" value="1" inputmode="numeric">
+          </div>
+
+          <button class="btn btn--primary" type="submit">Calcular peso</button>
+        </form>
+
+        <div class="calculator__result" aria-live="polite" data-calc-resultado>
+          <p class="calculator__label">Peso aproximado</p>
+          <p class="calculator__weight"><output name="peso" data-calc-peso>— kg</output></p>
+          <p class="calculator__formula" data-calc-formula>Escribe las medidas y pulsa «Calcular peso».</p>
+        </div>
+        <p class="note">El resultado es aproximado. El peso real depende del proceso y de las tolerancias de la pieza.</p>
+      </div>
+    </section>
+
+    <!-- IA: generado · Llamada a la acción -->
+    <section class="cta" aria-labelledby="cta-titulo">
+      <div class="container">
+        <h2 class="cta__title" id="cta-titulo">¿Ya sabes lo que necesitas?</h2>
+        <div class="button-group">
+          <a class="btn btn--secondary" href="#contacto">Contacto</a>
+          <a class="btn btn--primary" href="cotizacion.html">Solicitar cotización</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- IA: generado · Footer común (igual en todas las páginas) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
+      <nav class="site-footer__nav" aria-label="Pie de página">
+        <ul class="site-footer__links">
+          <li><a href="../index.html">Página de inicio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="fundicion.html#calculadora">Calculadora de peso aproximado</a></li>
+          <li><a href="cotizacion.html">Cotizaciones</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__info">
+        <section class="site-footer__block" id="contacto" aria-labelledby="footer-contacto">
+          <h2 class="site-footer__title" id="footer-contacto">Contacto</h2>
+          <!-- PLACEHOLDER: sustituir teléfono y correo por los reales -->
+          <p><a href="tel:+520000000000">[PLACEHOLDER: teléfono]</a></p>
+          <p><a href="mailto:ventas@ejemplo.com">[PLACEHOLDER: correo de ventas]</a></p>
+          <p>Lunes a viernes, [PLACEHOLDER: horario]</p>
+        </section>
+        <section class="site-footer__block" id="ubicacion" aria-labelledby="footer-ubicacion">
+          <h2 class="site-footer__title" id="footer-ubicacion">Ubicación</h2>
+          <address>[PLACEHOLDER: calle y número]<br>[PLACEHOLDER: colonia, ciudad y código postal]</address>
+        </section>
+        <section class="site-footer__block" aria-labelledby="footer-empresa">
+          <h2 class="site-footer__title" id="footer-empresa">Mayco Company</h2>
+          <p>Fabricamos y vendemos bronce y otras aleaciones. Maquinados, fundición, aceros, plásticos de ingeniería y herramientas de corte OSG Royco.</p>
+        </section>
+      </div>
+
+      <p class="site-footer__copy">Mayco © 2025 · Todos los derechos reservados</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotización · Mayco Company</title>
+  <meta name="description" content="Cotiza tu pieza de bronce en siete pasos: tipo, calidad, forma y medidas, número de piezas, precio y pedido.">
+  <link rel="icon" href="../assets/img/logo-co.webp" type="image/webp">
+  <!-- Tipografías (propuesta D5, pendiente de aprobar): Kumbh Sans y Archivo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&amp;family=Kumbh+Sans:wght@400;500;700&amp;display=swap">
+  <!-- Estilos del proyecto, siempre en este orden -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="page page--cotizacion">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- IA: generado · Header simplificado (flujos de cotización y cuenta, como en el diseño) -->
+  <header class="site-header site-header--simple">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="../index.html">
+        <img src="../assets/img/logo-co.webp" alt="Mayco Company, ir al inicio" width="64" height="39">
+      </a>
+      <p class="site-header__label">Cotización</p>
+    </div>
+  </header>
+
+  <main id="contenido" class="quote">
+    <h1 class="visually-hidden">Cotización de bronce</h1>
+    <div class="quote__layout container">
+      <ol class="steps" aria-label="Progreso de la cotización" data-steps>
+        <li class="steps__item is-active" aria-current="step"><span class="visually-hidden">Paso 1 de 7: tipo de bronce</span></li>
+        <li class="steps__item"><span class="visually-hidden">Paso 2 de 7: calidad</span></li>
+        <li class="steps__item"><span class="visually-hidden">Paso 3 de 7: forma y medidas</span></li>
+        <li class="steps__item"><span class="visually-hidden">Paso 4 de 7: número de piezas</span></li>
+        <li class="steps__item"><span class="visually-hidden">Paso 5 de 7: resumen</span></li>
+        <li class="steps__item"><span class="visually-hidden">Paso 6 de 7: precio</span></li>
+        <li class="steps__item"><span class="visually-hidden">Paso 7 de 7: confirmación</span></li>
+      </ol>
+
+      <form class="quote__form" data-cotizacion novalidate>
+        <!-- IA: generado · Paso 1: tipo de bronce -->
+        <section class="quote-step is-active" data-step="1" aria-labelledby="paso1-titulo">
+          <h2 class="quote-step__title" id="paso1-titulo">¿Qué tipo <span class="quote-step__subtitle">de bronce estás buscando?</span></h2>
+          <fieldset class="option-grid option-grid--4">
+            <legend class="visually-hidden">Tipo de bronce</legend>
+            <label class="option-card">
+              <input class="option-card__input" type="radio" name="tipo" value="aluminio" required>
+              <img class="option-card__image" src="../assets/img/bronce-al-aluminio.webp" alt="" width="80" height="120">
+              <span class="option-card__label">Bronce al aluminio</span>
+            </label>
+            <label class="option-card">
+              <input class="option-card__input" type="radio" name="tipo" value="plomo" required>
+              <img class="option-card__image" src="../assets/img/bronce-al-plomo.webp" alt="" width="80" height="120">
+              <span class="option-card__label">Bronce al plomo</span>
+            </label>
+            <label class="option-card">
+              <input class="option-card__input" type="radio" name="tipo" value="niquel" required>
+              <img class="option-card__image" src="../assets/img/bronce-al-niquel.webp" alt="" width="80" height="120">
+              <span class="option-card__label">Bronce al níquel</span>
+            </label>
+            <label class="option-card">
+              <input class="option-card__input" type="radio" name="tipo" value="estano" required>
+              <img class="option-card__image" src="../assets/img/bronce-al-estano.webp" alt="" width="80" height="120">
+              <span class="option-card__label">Bronce al estaño</span>
+            </label>
+          </fieldset>
+          <div class="quote-step__actions">
+            <button class="btn btn--primary" type="button" data-next>Siguiente</button>
+          </div>
+          <div class="quote-step__help"><a class="btn btn--contact" href="#ayuda-cotizacion">Contacto</a></div>
+        </section>
+
+        <!-- IA: generado · Paso 2: calidad -->
+        <section class="quote-step" data-step="2" aria-labelledby="paso2-titulo">
+          <h2 class="quote-step__title" id="paso2-titulo">¿Qué calidad <span class="quote-step__subtitle">de bronce estás buscando?</span></h2>
+          <fieldset class="option-grid option-grid--3">
+            <legend class="visually-hidden">Calidad del bronce</legend>
+            <label class="option-card option-card--text">
+              <input class="option-card__input" type="radio" name="calidad" value="sae62" required>
+              <span class="option-card__label">SAE 62</span>
+            </label>
+            <label class="option-card option-card--text">
+              <input class="option-card__input" type="radio" name="calidad" value="sae64" required>
+              <span class="option-card__label">SAE 64</span>
+            </label>
+            <label class="option-card option-card--text">
+              <input class="option-card__input" type="radio" name="calidad" value="sae65" required>
+              <span class="option-card__label">SAE 65</span>
+            </label>
+            <label class="option-card option-card--text">
+              <input class="option-card__input" type="radio" name="calidad" value="sae68" required>
+              <span class="option-card__label">SAE 68</span>
+            </label>
+            <label class="option-card option-card--text">
+              <input class="option-card__input" type="radio" name="calidad" value="sae660" required>
+              <span class="option-card__label">SAE 660</span>
+            </label>
+            <label class="option-card option-card--text">
+              <input class="option-card__input" type="radio" name="calidad" value="sae600" required>
+              <span class="option-card__label">SAE 600</span>
+            </label>
+          </fieldset>
+          <div class="quote-step__actions">
+            <button class="btn btn--ghost" type="button" data-prev>Anterior</button>
+            <button class="btn btn--primary" type="button" data-next>Siguiente</button>
+          </div>
+          <div class="quote-step__help"><a class="btn btn--contact" href="#ayuda-cotizacion">Contacto</a></div>
+        </section>
+
+        <!-- IA: generado · Paso 3: forma y medidas -->
+        <section class="quote-step" data-step="3" aria-labelledby="paso3-titulo">
+          <h2 class="quote-step__title" id="paso3-titulo">¿Qué medidas <span class="quote-step__subtitle">tendrá la pieza?</span></h2>
+          <fieldset class="form__group">
+            <legend class="form__legend">Forma</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="forma" value="barra" checked> Barra</label>
+              <label class="choice"><input type="radio" name="forma" value="buje"> Buje</label>
+              <label class="choice"><input type="radio" name="forma" value="placa"> Placa</label>
+            </div>
+          </fieldset>
+          <fieldset class="form__group">
+            <legend class="form__legend">Unidades</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="unidad" value="in" checked> Pulgadas</label>
+              <label class="choice"><input type="radio" name="unidad" value="mm"> Milímetros</label>
+            </div>
+          </fieldset>
+          <div class="field field--center">
+            <label class="visually-hidden" for="cot-medidas">Medidas de la pieza</label>
+            <input class="field__input field__input--big" id="cot-medidas" name="medidas" type="text" placeholder="4 x 14" autocomplete="off" required aria-describedby="cot-medidas-ayuda cot-medidas-error">
+            <p class="field__hint" id="cot-medidas-ayuda">Barra: diámetro × largo · Buje: Ø exterior × Ø interior × largo · Placa: espesor × ancho × largo</p>
+            <p class="field__error" id="cot-medidas-error" aria-live="polite"></p>
+          </div>
+          <div class="quote-step__actions">
+            <button class="btn btn--ghost" type="button" data-prev>Anterior</button>
+            <button class="btn btn--primary" type="button" data-next>Siguiente</button>
+          </div>
+          <div class="quote-step__help"><a class="btn btn--contact" href="#ayuda-cotizacion">Contacto</a></div>
+        </section>
+
+        <!-- IA: generado · Paso 4: número de piezas -->
+        <section class="quote-step quote-step--product" data-step="4" aria-labelledby="paso4-titulo">
+          <div class="quote-step__text">
+            <h2 class="quote-step__title" id="paso4-titulo" data-resumen-forma>Tu pieza</h2>
+            <p class="quote-step__detail" data-resumen-detalle>Completa los pasos anteriores</p>
+            <div class="field">
+              <label class="visually-hidden" for="cot-piezas">Número de piezas</label>
+              <input class="field__input" id="cot-piezas" name="piezas" type="number" min="1" step="1" placeholder="Número de piezas" inputmode="numeric" required aria-describedby="cot-piezas-error">
+              <p class="field__error" id="cot-piezas-error" aria-live="polite"></p>
+            </div>
+          </div>
+          <!-- PROVISIONAL: imagen recortada de la captura; sustituir por la foto original de la barra -->
+          <img class="quote-step__image" src="../assets/img/PROVISIONAL-barra-redonda.webp" alt="" width="123" height="252" data-resumen-imagen>
+          <div class="quote-step__actions">
+            <button class="btn btn--ghost" type="button" data-prev>Anterior</button>
+            <button class="btn btn--primary" type="button" data-next>Siguiente</button>
+          </div>
+          <div class="quote-step__help"><a class="btn btn--contact" href="#ayuda-cotizacion">Contacto</a></div>
+        </section>
+
+        <!-- IA: generado · Paso 5: resumen -->
+        <section class="quote-step quote-step--product" data-step="5" aria-labelledby="paso5-titulo">
+          <div class="quote-step__text">
+            <h2 class="quote-step__title" id="paso5-titulo" data-resumen-cantidad>Tus piezas</h2>
+            <p class="quote-step__detail" data-resumen-detalle>—</p>
+          </div>
+          <img class="quote-step__image" src="../assets/img/PROVISIONAL-barra-redonda.webp" alt="" width="123" height="252" data-resumen-imagen>
+          <div class="quote-step__actions">
+            <button class="btn btn--ghost" type="button" data-prev>Anterior</button>
+            <button class="btn btn--primary" type="button" data-next>Cotizar</button>
+          </div>
+          <div class="quote-step__help"><a class="btn btn--contact" href="#ayuda-cotizacion">Contacto</a></div>
+        </section>
+
+        <!-- IA: generado · Paso 6: precio -->
+        <section class="quote-step quote-step--product" data-step="6" aria-labelledby="paso6-titulo">
+          <div class="quote-step__text">
+            <h2 class="quote-step__title" id="paso6-titulo" data-resumen-cantidad>Tus piezas</h2>
+            <p class="quote-step__detail" data-resumen-detalle>—</p>
+            <p class="quote-step__figure"><output data-cot-peso>X kg</output></p>
+            <p class="quote-step__figure"><output data-cot-precio>$----</output> más IVA</p>
+          </div>
+          <img class="quote-step__image" src="../assets/img/PROVISIONAL-barra-redonda.webp" alt="" width="123" height="252" data-resumen-imagen>
+          <div class="quote-step__actions">
+            <button class="btn btn--ghost" type="button" data-prev>Anterior</button>
+            <button class="btn btn--secondary" type="button" data-agregar-carrito>Agregar al carrito</button>
+            <button class="btn btn--primary btn--lg" type="submit">Hacer pedido</button>
+          </div>
+          <div class="quote-step__help"><a class="btn btn--contact" href="#ayuda-cotizacion">Contacto</a></div>
+        </section>
+
+        <!-- IA: generado · Paso 7: confirmación -->
+        <section class="quote-step confirmation" data-step="7" aria-labelledby="paso7-titulo">
+          <img class="confirmation__logo" src="../assets/img/logo-mayco-company.webp" alt="" width="180" height="64">
+          <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg>
+          <h2 class="confirmation__title" id="paso7-titulo">Pedido mandado correctamente</h2>
+          <img class="confirmation__image" src="../assets/img/confirmacion-erizo.webp" alt="Erizo saludando" width="160" height="235" loading="lazy">
+          <div class="button-group">
+            <a class="btn btn--secondary" href="../index.html">Volver al inicio</a>
+            <a class="btn btn--primary" href="cotizacion.html">Nueva cotización</a>
+          </div>
+        </section>
+      </form>
+    </div>
+
+    <!-- IA: generado · Ayuda: se muestra al pulsar «Contacto» en cualquier paso -->
+    <aside class="help-panel" id="ayuda-cotizacion" aria-labelledby="ayuda-titulo">
+      <div class="container">
+        <h2 class="help-panel__title" id="ayuda-titulo">¿Necesitas ayuda con tu cotización?</h2>
+        <p>Llámanos o escríbenos y dinos qué necesitas: forma de la pieza, calidad, medidas y cantidad.</p>
+        <div class="button-group">
+          <a class="btn btn--primary" href="tel:+520000000000">Llamar: [PLACEHOLDER: teléfono]</a>
+          <a class="btn btn--secondary" href="mailto:ventas@ejemplo.com?subject=Ayuda%20con%20mi%20cotizaci%C3%B3n" data-ayuda-correo>Enviar correo</a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- IA: generado · Footer común (igual en todas las páginas) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
+      <nav class="site-footer__nav" aria-label="Pie de página">
+        <ul class="site-footer__links">
+          <li><a href="../index.html">Página de inicio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="fundicion.html#calculadora">Calculadora de peso aproximado</a></li>
+          <li><a href="cotizacion.html">Cotizaciones</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__info">
+        <section class="site-footer__block" id="contacto" aria-labelledby="footer-contacto">
+          <h2 class="site-footer__title" id="footer-contacto">Contacto</h2>
+          <!-- PLACEHOLDER: sustituir teléfono y correo por los reales -->
+          <p><a href="tel:+520000000000">[PLACEHOLDER: teléfono]</a></p>
+          <p><a href="mailto:ventas@ejemplo.com">[PLACEHOLDER: correo de ventas]</a></p>
+          <p>Lunes a viernes, [PLACEHOLDER: horario]</p>
+        </section>
+        <section class="site-footer__block" id="ubicacion" aria-labelledby="footer-ubicacion">
+          <h2 class="site-footer__title" id="footer-ubicacion">Ubicación</h2>
+          <address>[PLACEHOLDER: calle y número]<br>[PLACEHOLDER: colonia, ciudad y código postal]</address>
+        </section>
+        <section class="site-footer__block" aria-labelledby="footer-empresa">
+          <h2 class="site-footer__title" id="footer-empresa">Mayco Company</h2>
+          <p>Fabricamos y vendemos bronce y otras aleaciones. Maquinados, fundición, aceros, plásticos de ingeniería y herramientas de corte OSG Royco.</p>
+        </section>
+      </div>
+
+      <p class="site-footer__copy">Mayco © 2025 · Todos los derechos reservados</p>
+    </div>
+  </footer>
+</body>
+</html>
