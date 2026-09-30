@@ -45,9 +45,13 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 | D12 | Monedas en el carrito | **Aprobada:** un solo carrito agrupado por moneda. Un bloque "Herramientas OSG Royco (USD)" y otro "Bronce (MXN + IVA)", cada uno con su subtotal. Sin conversión automática, con la nota "Los importes en USD se facturan al tipo de cambio del día de pago". Evita tener dos carritos y no bloquea al cliente. | Respuesta 11 y Prompt 03 |
 | D13 | Móvil | No hay diseño móvil. La IA lo propone en la Fase 3 a partir de los componentes de escritorio. | Respuesta 12 |
 | D14 | Páginas extra | Se añaden `pages/cotizacion.html` (flujo de 7 pasos) y `pages/producto.html` (vista de producto y compra en 3 pasos). En total hay 9 páginas. | Fase 2 |
-| D15 | Header en flujos | La cotización y la página de cuenta usan un header simplificado (logo más título), como en las capturas. El resto usa el header completo. El footer es el mismo en todas. *Pendiente de confirmar.* | Fase 2 |
-| D16 | Botones "Anterior / Siguiente" | Se añaden en los pasos de la cotización aunque no aparecen en el diseño. Avanzar solo con elegir una opción impide usar las flechas del teclado dentro de un grupo de opciones. *Pendiente de confirmar.* | Fase 2 |
-| D17 | Bronce en el carrito | El paso 6 de la cotización tiene "Hacer pedido" (como en el diseño) y además "Agregar al carrito", para que el bronce pueda llegar al carrito según D12. *Pendiente de confirmar.* | Fase 2 |
+| D15 | Header en flujos | La cotización y la página de cuenta usan un header simplificado (logo más título), como en las capturas. El resto usa el header completo. El footer es el mismo en todas. **Aprobada.** | Fase 2 y Prompt 04 |
+| D16 | Botones "Anterior / Siguiente" | Se añaden en los pasos de la cotización aunque no aparecen en el diseño. Avanzar solo con elegir una opción impide usar las flechas del teclado dentro de un grupo de opciones. **Aprobada.** | Fase 2 y Prompt 04 |
+| D17 | Bronce en el carrito | El paso 6 de la cotización tiene "Hacer pedido" (como en el diseño) y además "Agregar al carrito", para que el bronce pueda llegar al carrito según D12. **Aprobada.** | Fase 2 y Prompt 04 |
+| D18 | Inicio, sección 1 | «Mostrar más» → ficha del producto EXOCARB® VX. «Comprar» → la misma ficha, directamente en el paso de cantidad (`?paso=2`). | Prompt 04 |
+| D19 | Imágenes finales | Foto original del machuelo (horizontal para el inicio y el catálogo; girada en vertical para la ficha). El erizo sustituye al pato en el carrito vacío. | Prompt 04 |
+| D20 | Fuentes | No se pueden descargar desde el entorno de la IA (la red bloquea npm y Google Fonts), así que se cargan desde Google Fonts en el navegador del usuario. Las capturas de la IA salen con una fuente de reserva. | Fase 3 |
+| D21 | Sin JavaScript | La web funciona sin JS: el menú se ve siempre, el carrusel se desliza con scroll-snap y los pasos se muestran seguidos. Cuando `main.js` añade la clase `.js` a `<html>`, se activan el menú desplegable, las flechas y los puntos del carrusel, y un paso cada vez. | Fase 3 |
 
 ---
 
@@ -56,7 +60,7 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 - [x] **Fase 0:** análisis del diseño (tokens, componentes, secciones y dudas).
 - [x] **Fase 1:** repositorio y documentación del proceso (`.gitignore`, `.gitattributes`, `PLAN.md`, `agents/`, `skills/`).
 - [x] **Fase 2:** HTML semántico de todas las páginas.
-- [ ] **Fase 3:** CSS organizado, mobile-first.
+- [x] **Fase 3:** CSS organizado, mobile-first.
 - [ ] **Fase 4:** JavaScript (menú, calculadora, cotización, catálogo, carrito, formularios).
 - [ ] **Fase 5:** responsive a detalle (320 / 375 / 768 / 1024 / 1440).
 - [ ] **Fase 6:** README.md.
@@ -116,3 +120,28 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
   - La foto de fundición mide 678 px de ancho y puede verse pixelada a pantalla completa.
 - **Pendiente de revisión manual:** D15, D16, D17; enlaces de los botones del inicio (ver la respuesta de la fase); validar en validator.w3.org.
 - **Commit (lo hace el alumno):** `Fase 2: estructura HTML de las 9 páginas e imágenes optimizadas`. Hash: `[PLACEHOLDER]`.
+
+#### Correcciones de la Fase 2 tras la revisión del alumno
+- **Prompt:** [`docs/prompts/04-fase3-revision-fase2.md`](docs/prompts/04-fase3-revision-fase2.md)
+- Aplicadas D18 y D19, SAE 600 como «Consultar» y catálogo de 8 productos.
+- Eliminadas las imágenes `PROVISIONAL-osg-machuelo-*` y el pato. Solo queda provisional `PROVISIONAL-barra-redonda.webp`.
+
+### Fase 3: CSS
+- **Fecha:** 2026-09-30
+- **Prompt:** [`docs/prompts/04-fase3-revision-fase2.md`](docs/prompts/04-fase3-revision-fase2.md)
+- **Qué generó la IA:**
+  - `variables.css`: 57 tokens de color, tipografía (tamaños fluidos con `clamp()`), espaciado, radios y layout.
+  - `base.css`: reset, estilos de elementos, foco visible, `.visually-hidden` y enlace «Saltar al contenido».
+  - `layout.css`: contenedor, header (3 variantes: normal, sobre foto y simplificado), navegación, footer y secciones.
+  - `components.css`: 21 bloques de componente (botones, heroes, carrusel, tarjetas, tablas, formularios, calculadora, indicador de pasos, cotización, confirmación, catálogo, ficha de producto, login y carrito).
+  - `responsive.css`: todas las media queries (768, 1024 y 1440 px, y movimiento reducido).
+  - Propuesta de diseño móvil (no había captura): menú hamburguesa, puntos de pasos en horizontal arriba, login con la ilustración como franja superior y opciones de 2 en 2.
+- **Comprobaciones de la IA:**
+  - Ningún color, `!important`, selector por ID ni media query fuera de su sitio (búsqueda automática).
+  - Capturas de las 9 páginas a 1440 y 375 px, comparadas con `docs/diseno/`: sin scroll horizontal en ninguna.
+- **Errores encontrados y corregidos por la IA durante la fase:**
+  - Los botones de los heroes se apilaban en vertical. Causa: el grupo de botones no ocupaba todo el ancho dentro de un contenedor flex centrado.
+  - En las secciones sobre foto, el subtítulo quedaba en medio. Se movió bajo el título y los botones abajo, como en el diseño.
+- **Pendiente para la Fase 5 (responsive):** en móvil las flechas del carrusel tapan el título; las tablas de calidades se desplazan en horizontal dentro de su caja.
+- **Pendiente de revisión manual:** D5 (tipografía) al abrir la web en el navegador; comparar tamaños con Figma.
+- **Commit (lo hace el alumno):** `Fase 3: estilos CSS con tokens, componentes y versión móvil`. Hash: `[PLACEHOLDER]`.

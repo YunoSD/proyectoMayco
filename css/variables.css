@@ -1,0 +1,94 @@
+/* ==========================================================================
+   variables.css
+   Design tokens del proyecto. Es el ÚNICO archivo donde se escriben colores,
+   fuentes, tamaños, espaciados y radios. El resto de hojas usa var(--…).
+   Valores medidos en las capturas de docs/diseno/ (Fase 0).
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------
+     Colores
+     ------------------------------------------------------------------ */
+  --color-primario: #516fa6;          /* Botón principal, panel del login */
+  --color-primario-hover: #415a88;    /* Hover del botón principal (propuesta) */
+  --color-texto: #000000;             /* Texto y titulares */
+  --color-texto-suave: #4d4d4d;       /* Ayudas, notas y referencias */
+  --color-texto-invertido: #ffffff;   /* Texto sobre foto o sobre azul */
+  --color-fondo: #f5f5f5;             /* Fondo general */
+  --color-superficie: #f2f2f2;        /* Tarjetas y opciones SAE */
+  --color-seccion: #e8e8e8;           /* Fondo de zonas (carrusel, tarjetas) */
+  --color-caja: #e6e6e6;              /* Caja de opciones de la cotización */
+  --color-btn-secundario: #d7d7d7;    /* Botón «Mostrar más» */
+  --color-btn-secundario-hover: #c4c4c4;
+  --color-input: #dbdbdb;             /* Campos del login y signup */
+  --color-footer: #dcdcdc;            /* Footer */
+  --color-deshabilitado: #cecece;     /* Botones inactivos */
+  --color-indicador: #7b7b7b;         /* Puntos del carrusel y de los pasos */
+  --color-borde: #b7b7b7;             /* Borde de la tarjeta de producto */
+  --color-blanco: #ffffff;            /* Fondos blancos (ilustración del login) */
+  --color-error: #b3261e;             /* Mensajes de error (propuesta) */
+  --color-foco: #1f3a6b;              /* Anillo de foco del teclado (propuesta) */
+  --color-velo: rgb(0 0 0 / 0.45);    /* Velo sobre las fotos para leer el texto */
+  --color-hover-oscuro: rgb(0 0 0 / 0.06);      /* Hover sobre fondo claro */
+  --color-hover-claro: rgb(255 255 255 / 0.5);  /* Hover dentro de la caja de opciones */
+
+  /* ------------------------------------------------------------------
+     Tipografía (D5: pendiente de aprobar al verla)
+     ------------------------------------------------------------------ */
+  --font-titulos: "Kumbh Sans", "Segoe UI", system-ui, sans-serif;
+  --font-ui: "Archivo", "Segoe UI", system-ui, sans-serif;
+
+  --fs-hero: clamp(2.5rem, 4.5vw + 1rem, 5.5rem);      /* «Osg Royco», «Maquinados» */
+  --fs-titulo: clamp(2rem, 2.5vw + 1rem, 3.5rem);      /* «¿Qué tipo», «Stock» */
+  --fs-subtitulo: clamp(1.25rem, 1.2vw + 0.8rem, 2rem);/* «Somos distribuidores…» */
+  --fs-h3: clamp(1.25rem, 0.6vw + 1rem, 1.5rem);
+  --fs-grande: 1.125rem;
+  --fs-cuerpo: 1rem;
+  --fs-pequeno: 0.875rem;
+  --fs-mini: 0.75rem;
+
+  --fw-regular: 400;
+  --fw-medio: 500;
+  --fw-semi: 600;
+  --fw-bold: 700;
+
+  --lh-titulo: 1.1;
+  --lh-cuerpo: 1.55;
+
+  /* ------------------------------------------------------------------
+     Espaciado (escala de 8 px)
+     ------------------------------------------------------------------ */
+  --espacio-1: 0.5rem;   /*  8 px */
+  --espacio-2: 1rem;     /* 16 px */
+  --espacio-3: 1.5rem;   /* 24 px */
+  --espacio-4: 2rem;     /* 32 px */
+  --espacio-5: 3rem;     /* 48 px */
+  --espacio-6: 4rem;     /* 64 px */
+  --espacio-7: 6rem;     /* 96 px */
+
+  /* ------------------------------------------------------------------
+     Radios
+     ------------------------------------------------------------------ */
+  --radio-boton: 4px;
+  --radio-input: 8px;
+  --radio-tarjeta: 12px;
+  --radio-circulo: 50%;
+  --radio-pildora: 999px;
+
+  /* ------------------------------------------------------------------
+     Layout
+     Breakpoints (solo referencia: las custom properties no funcionan
+     dentro de @media): 768px tablet · 1024px escritorio · 1440px diseño
+     ------------------------------------------------------------------ */
+  --ancho-max: 1200px;
+  --ancho-texto: 60ch;
+  --margen-lateral: clamp(1rem, 4vw, 2rem);
+  --header-alto: 4.5rem;
+  --tactil-min: 44px;   /* Área táctil mínima */
+
+  /* ------------------------------------------------------------------
+     Efectos
+     ------------------------------------------------------------------ */
+  --sombra-tarjeta: 0 2px 8px rgb(0 0 0 / 0.08);
+  --transicion: 180ms ease;
+}

@@ -1,0 +1,1408 @@
+/* ==========================================================================
+   components.css
+   Un bloque por componente. Estilos de móvil (mobile-first); los cambios
+   para pantallas mayores están en responsive.css.
+   Estados que añade JavaScript: .is-active, .is-open, .is-invalid.
+   ========================================================================== */
+
+/* ==========================================================
+   COMPONENTE: Icono SVG
+   ========================================================== */
+.icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--sm {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon--xl {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+/* Enlace de icono del header (usuario y carrito) */
+.icon-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tactil-min);
+  height: var(--tactil-min);
+  border-radius: var(--radio-boton);
+}
+
+.icon-link:hover {
+  background-color: var(--color-hover-oscuro);
+}
+
+/* Contador de productos del carrito */
+.cart-count:not([hidden]) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding-inline: 0.25rem;
+  font-family: var(--font-ui);
+  font-size: var(--fs-mini);
+  font-weight: var(--fw-bold);
+  color: var(--color-texto-invertido);
+  background-color: var(--color-primario);
+  border-radius: var(--radio-pildora);
+}
+
+/* ==========================================================
+   COMPONENTE: Botón
+   ========================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-1);
+  min-height: var(--tactil-min);
+  padding: var(--espacio-1) var(--espacio-3);
+  font-family: var(--font-ui);
+  font-size: var(--fs-grande);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radio-boton);
+  transition: background-color var(--transicion), border-color var(--transicion);
+}
+
+.button-group .btn {
+  min-width: min(12.5rem, 100%);
+}
+
+/* Principal: azul (Solicitar cotización, Cotizar, Siguiente…) */
+.btn--primary {
+  font-weight: var(--fw-bold);
+  color: var(--color-texto-invertido);
+  background-color: var(--color-primario);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primario-hover);
+}
+
+/* Secundario: gris (Mostrar más) */
+.btn--secondary {
+  color: var(--color-texto);
+  background-color: var(--color-btn-secundario);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-btn-secundario-hover);
+}
+
+/* Fantasma: solo borde (Anterior) */
+.btn--ghost {
+  color: var(--color-texto);
+  background-color: transparent;
+  border-color: var(--color-texto);
+}
+
+.btn--ghost:hover {
+  background-color: var(--color-hover-oscuro);
+}
+
+/* Claro: blanco sobre el panel azul del login */
+.btn--light {
+  color: var(--color-texto);
+  background-color: var(--color-blanco);
+  border-radius: var(--radio-input);
+}
+
+.btn--light:hover {
+  background-color: var(--color-caja);
+}
+
+/* Texto: sin fondo (Sign up / Log in en el formulario de registro) */
+.btn--text {
+  font-size: 1.5rem;   /* Texto grande: el contraste negro sobre azul (4.2:1) es válido */
+  color: var(--color-texto);
+  background-color: transparent;
+}
+
+.btn--text:hover {
+  text-decoration: underline;
+}
+
+/* Contacto: pequeño, en cada paso de la cotización */
+.btn--contact {
+  min-height: 2.25rem;
+  padding: 0.25rem var(--espacio-2);
+  font-size: var(--fs-cuerpo);
+  font-weight: var(--fw-bold);
+  color: var(--color-texto-invertido);
+  background-color: var(--color-primario);
+}
+
+.btn--contact:hover {
+  background-color: var(--color-primario-hover);
+}
+
+.btn--lg {
+  padding-inline: var(--espacio-4);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  color: var(--color-texto-suave);
+  background-color: var(--color-deshabilitado);
+  cursor: not-allowed;
+}
+
+/* Sobre fotos o fondos azules, el foco se ve en blanco */
+.feature :focus-visible,
+.page-hero :focus-visible,
+.slide :focus-visible,
+.auth__panel :focus-visible {
+  outline-color: var(--color-texto-invertido);
+}
+
+/* ==========================================================
+   COMPONENTE: Hero de producto (inicio, sección 1) y hero simple
+   ========================================================== */
+.hero {
+  padding-block: var(--espacio-5) var(--espacio-6);
+  text-align: center;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__title {
+  font-size: var(--fs-hero);
+}
+
+.hero__subtitle {
+  margin-top: var(--espacio-1);
+  font-size: var(--fs-subtitulo);
+}
+
+.hero__image {
+  width: min(100%, 44rem);
+  margin-block: var(--espacio-5);
+}
+
+.hero--simple .hero__subtitle {
+  margin-bottom: var(--espacio-5);
+}
+
+/* ==========================================================
+   COMPONENTE: Sección sobre foto (inicio, sección 3) y hero de página
+   ========================================================== */
+.feature,
+.page-hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(28rem, 80vh, 40rem);
+  overflow: hidden;
+  color: var(--color-texto-invertido);
+  text-align: center;
+  isolation: isolate;
+}
+
+.page-hero {
+  min-height: clamp(32rem, 100svh, 48rem);
+  padding-top: var(--header-alto);
+}
+
+.feature__bg,
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Velo oscuro para que el texto blanco se lea sobre cualquier foto */
+.feature::after,
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, var(--color-velo), transparent 45%, var(--color-velo));
+}
+
+.feature__content,
+.page-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: var(--espacio-6) var(--espacio-5);
+}
+
+/* Título y subtítulo arriba; botones abajo, como en el diseño */
+.feature__content .button-group,
+.page-hero__content .button-group {
+  margin-top: auto;
+  padding-top: var(--espacio-5);
+}
+
+.feature__title,
+.page-hero__title {
+  font-size: var(--fs-hero);
+}
+
+.feature__subtitle,
+.page-hero__subtitle {
+  margin-top: var(--espacio-2);
+  font-size: var(--fs-subtitulo);
+}
+
+/* ==========================================================
+   COMPONENTE: Carrusel (inicio, sección 2)
+   Sin JS: las diapositivas se desplazan con el dedo o la barra (scroll-snap).
+   Con JS: se añaden flechas y puntos.
+   ========================================================== */
+.carousel {
+  padding-block: var(--espacio-6);
+  background-color: var(--color-seccion);
+}
+
+.carousel__inner {
+  position: relative;
+}
+
+.carousel__track {
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+  gap: var(--espacio-2);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  border-radius: var(--radio-tarjeta);
+}
+
+.js .carousel__track {
+  scrollbar-width: none;
+}
+
+.carousel__slide {
+  scroll-snap-align: start;
+}
+
+.slide {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 26rem;
+  overflow: hidden;
+  color: var(--color-texto-invertido);
+  border-radius: var(--radio-tarjeta);
+  isolation: isolate;
+}
+
+.slide__image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, var(--color-velo), transparent 70%),
+              linear-gradient(to bottom, var(--color-velo), transparent 30%);
+}
+
+.slide__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 26rem;
+  padding: var(--espacio-3);
+}
+
+.slide__eyebrow {
+  font-family: var(--font-ui);
+  font-weight: var(--fw-bold);
+}
+
+.slide__title {
+  margin-top: auto;
+  font-size: var(--fs-titulo);
+}
+
+.slide__subtitle {
+  margin-bottom: var(--espacio-2);
+  font-size: var(--fs-subtitulo);
+}
+
+.slide .button-group {
+  justify-content: flex-start;
+  gap: var(--espacio-1) var(--espacio-2);
+}
+
+.slide .button-group .btn {
+  min-width: 0;
+  padding-inline: var(--espacio-2);
+  font-size: var(--fs-cuerpo);
+}
+
+/* Flechas y puntos: solo con JS */
+.carousel__arrow,
+.carousel__dots {
+  display: none;
+}
+
+.js .carousel__arrow {
+  position: absolute;
+  top: 13rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tactil-min);
+  height: var(--tactil-min);
+  padding: 0;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  border: 0;
+  border-radius: var(--radio-circulo);
+  box-shadow: var(--sombra-tarjeta);
+  transform: translateY(-50%);
+}
+
+.js .carousel__arrow--prev {
+  left: var(--espacio-1);
+}
+
+.js .carousel__arrow--next {
+  right: var(--espacio-1);
+}
+
+.js .carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--espacio-1);
+  margin-top: var(--espacio-3);
+}
+
+/* El punto se ve de 14 px, pero el área táctil es de 44 px */
+.carousel__dot {
+  display: grid;
+  place-items: center;
+  width: var(--tactil-min);
+  height: var(--tactil-min);
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.carousel__dot::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-indicador);
+  border-radius: var(--radio-circulo);
+  transition: transform var(--transicion), background-color var(--transicion);
+}
+
+.carousel__dot[aria-current="true"]::before {
+  background-color: var(--color-texto);
+  transform: scale(1.25);
+}
+
+/* ==========================================================
+   COMPONENTE: Tarjetas Stock / Pedidos (inicio, sección 4)
+   ========================================================== */
+.promo {
+  padding-block: var(--espacio-7);
+  background-color: var(--color-seccion);
+}
+
+.promo__grid {
+  display: grid;
+  gap: var(--espacio-3);
+}
+
+.promo-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  padding: var(--espacio-4);
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-tarjeta);
+}
+
+.promo-card__text {
+  flex: 1 1 12rem;
+}
+
+.promo-card__title {
+  font-size: var(--fs-titulo);
+}
+
+.promo-card__subtitle {
+  margin-bottom: var(--espacio-3);
+  font-size: var(--fs-subtitulo);
+}
+
+.promo-card__image {
+  flex: 1 1 8rem;
+  max-width: 13rem;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+/* ==========================================================
+   COMPONENTE: Tarjetas de servicio, de tipo de bronce y etiquetas
+   ========================================================== */
+.service-card,
+.type-card {
+  padding: var(--espacio-3);
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-tarjeta);
+}
+
+.section--alt .service-card,
+.section--alt .type-card {
+  background-color: var(--color-fondo);
+}
+
+.service-card__title,
+.type-card__title {
+  margin-bottom: var(--espacio-1);
+  font-size: var(--fs-h3);
+}
+
+.type-card {
+  text-align: center;
+}
+
+.type-card__image {
+  width: auto;
+  height: 8rem;
+  margin: 0 auto var(--espacio-2);
+  object-fit: contain;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1);
+}
+
+.tag-list__item {
+  padding: var(--espacio-1) var(--espacio-2);
+  font-weight: var(--fw-medio);
+  background-color: var(--color-caja);
+  border-radius: var(--radio-pildora);
+}
+
+.tag-list__item a {
+  display: inline-block;
+  padding-block: 0.25rem;
+}
+
+/* ==========================================================
+   COMPONENTE: Datos destacados (fundición)
+   ========================================================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+  gap: var(--espacio-2);
+}
+
+.stats__item {
+  padding: var(--espacio-3);
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-tarjeta);
+}
+
+.stats__label {
+  font-size: var(--fs-pequeno);
+  color: var(--color-texto-suave);
+}
+
+.stats__value {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+
+/* ==========================================================
+   COMPONENTE: Proceso por pasos numerados
+   ========================================================== */
+.process {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  gap: var(--espacio-4);
+  counter-reset: paso;
+}
+
+.process__step {
+  counter-increment: paso;
+}
+
+.process__step::before {
+  content: counter(paso);
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--espacio-2);
+  font-family: var(--font-ui);
+  font-weight: var(--fw-bold);
+  color: var(--color-texto-invertido);
+  background-color: var(--color-primario);
+  border-radius: var(--radio-circulo);
+}
+
+.process__title {
+  margin-bottom: var(--espacio-1);
+  font-size: var(--fs-h3);
+}
+
+/* ==========================================================
+   COMPONENTE: Tabla de datos (calidades de bronce y acero)
+   ========================================================== */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.data-table {
+  min-width: 36rem;
+  font-size: var(--fs-pequeno);
+  text-align: left;
+}
+
+.data-table__caption {
+  margin-bottom: var(--espacio-1);
+  font-size: var(--fs-pequeno);
+  color: var(--color-texto-suave);
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem var(--espacio-2);
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.data-table thead th {
+  font-family: var(--font-ui);
+  background-color: var(--color-caja);
+}
+
+.data-table tbody th {
+  white-space: nowrap;
+}
+
+/* Nota pequeña bajo tablas y formularios */
+.note {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-2);
+  font-size: var(--fs-pequeno);
+  color: var(--color-texto-suave);
+}
+
+/* ==========================================================
+   COMPONENTE: Llamada a la acción final
+   ========================================================== */
+.cta {
+  padding-block: var(--espacio-6);
+  text-align: center;
+  background-color: var(--color-seccion);
+}
+
+.cta__title {
+  margin-bottom: var(--espacio-4);
+  font-size: var(--fs-titulo);
+}
+
+/* ==========================================================
+   COMPONENTE: Formulario (campos, opciones y mensajes)
+   ========================================================== */
+.form__group {
+  margin-bottom: var(--espacio-3);
+}
+
+.form__legend {
+  margin-bottom: var(--espacio-1);
+  font-weight: var(--fw-bold);
+}
+
+.field {
+  display: grid;
+  gap: 0.375rem;
+  margin-bottom: var(--espacio-3);
+}
+
+.field__label {
+  font-weight: var(--fw-bold);
+}
+
+.field__input {
+  width: 100%;
+  min-height: var(--tactil-min);
+  padding: 0.625rem var(--espacio-2);
+  background-color: var(--color-input);
+  border: 2px solid transparent;
+  border-radius: var(--radio-input);
+}
+
+.field__input::placeholder {
+  color: var(--color-texto-suave);
+}
+
+.field__input:focus-visible {
+  border-color: var(--color-foco);
+  outline-offset: 1px;
+}
+
+.field__input[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.field__hint {
+  font-size: var(--fs-pequeno);
+  color: var(--color-texto-suave);
+}
+
+.field__error {
+  font-size: var(--fs-pequeno);
+  font-weight: var(--fw-semi);
+  color: var(--color-error);
+}
+
+.field__error:empty {
+  display: none;
+}
+
+.field--center {
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+.field__input--big {
+  min-height: 3.25rem;
+  font-size: var(--fs-grande);
+  text-align: center;
+}
+
+/* Campo con icono dentro (login) */
+.field--icon {
+  position: relative;
+}
+
+.field--icon .field__input {
+  padding-left: 2.75rem;
+}
+
+.field__icon {
+  position: absolute;
+  top: calc(var(--tactil-min) / 2);
+  left: 0.875rem;
+  color: var(--color-texto);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Opciones tipo píldora (forma y unidades) */
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1);
+}
+
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  min-height: var(--tactil-min);
+  padding: 0.5rem var(--espacio-2);
+  background-color: var(--color-caja);
+  border-radius: var(--radio-pildora);
+  cursor: pointer;
+}
+
+.choice:has(input:checked) {
+  font-weight: var(--fw-bold);
+  outline: 2px solid var(--color-primario);
+}
+
+.choice input,
+.checkbox input {
+  accent-color: var(--color-primario);
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  min-height: var(--tactil-min);
+  font-size: var(--fs-pequeno);
+  font-style: italic;
+}
+
+.form__message {
+  margin-bottom: var(--espacio-2);
+  font-size: var(--fs-pequeno);
+  font-weight: var(--fw-semi);
+}
+
+.form__message:empty {
+  display: none;
+}
+
+/* ==========================================================
+   COMPONENTE: Calculadora de peso
+   ========================================================== */
+.calculator {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.calculator__result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--espacio-4);
+  text-align: center;
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-tarjeta);
+}
+
+.calculator__label {
+  font-weight: var(--fw-bold);
+}
+
+.calculator__weight {
+  margin-block: var(--espacio-1);
+  font-size: var(--fs-titulo);
+  font-weight: var(--fw-bold);
+}
+
+.calculator__formula {
+  font-size: var(--fs-pequeno);
+  color: var(--color-texto-suave);
+}
+
+/* ==========================================================
+   COMPONENTE: Indicador de pasos (puntos verticales del diseño)
+   En móvil es horizontal; en tablet y escritorio, vertical a la izquierda.
+   ========================================================== */
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 0.625rem;
+}
+
+.steps__item {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-deshabilitado);
+  border-radius: var(--radio-circulo);
+}
+
+.steps__item.is-done {
+  background-color: var(--color-indicador);
+}
+
+.steps__item.is-active {
+  background-color: var(--color-texto);
+  transform: scale(1.3);
+}
+
+/* ==========================================================
+   COMPONENTE: Cotización (pasos, opciones y ayuda)
+   Sin JS se ven todos los pasos seguidos; con JS, uno cada vez.
+   ========================================================== */
+.quote {
+  padding-block: var(--espacio-4) var(--espacio-6);
+}
+
+.quote__layout {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.quote-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: var(--espacio-4);
+  text-align: center;
+}
+
+.js .quote-step:not(.is-active),
+.js .product-step:not(.is-active) {
+  display: none;
+}
+
+.quote-step__title {
+  margin-bottom: var(--espacio-4);
+  font-size: var(--fs-titulo);
+}
+
+.quote-step__subtitle {
+  display: block;
+  margin-top: var(--espacio-1);
+  font-size: var(--fs-subtitulo);
+  font-weight: var(--fw-regular);
+}
+
+.quote-step__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-4);
+}
+
+.quote-step__help {
+  margin-top: var(--espacio-3);
+}
+
+/* Paso con la pieza: texto a la izquierda e imagen a la derecha */
+.quote-step--product {
+  text-align: left;
+}
+
+.quote-step--product .quote-step__title {
+  margin-bottom: var(--espacio-1);
+}
+
+.quote-step__text {
+  width: 100%;
+}
+
+.quote-step__detail {
+  margin-bottom: var(--espacio-3);
+  font-size: var(--fs-subtitulo);
+}
+
+.quote-step__figure {
+  font-size: var(--fs-titulo);
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+}
+
+.quote-step__image {
+  width: auto;
+  max-height: 12rem;
+  margin-block: var(--espacio-3);
+}
+
+/* Caja de opciones (tipo de bronce y calidad) */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-2);
+  width: min(100%, 44rem);
+  padding: var(--espacio-3);
+  background-color: var(--color-caja);
+  border-radius: var(--radio-tarjeta);
+}
+
+.option-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--espacio-1);
+  padding: var(--espacio-2) var(--espacio-1);
+  border: 3px solid transparent;
+  border-radius: var(--radio-tarjeta);
+  cursor: pointer;
+  transition: background-color var(--transicion);
+}
+
+.option-card:hover {
+  background-color: var(--color-hover-claro);
+}
+
+/* El radio real queda invisible pero sigue funcionando con teclado */
+.option-card__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option-card:has(.option-card__input:checked) {
+  background-color: var(--color-fondo);
+  border-color: var(--color-primario);
+}
+
+.option-card:has(.option-card__input:focus-visible) {
+  outline: 3px solid var(--color-foco);
+  outline-offset: 2px;
+}
+
+.option-card__image {
+  width: auto;
+  height: 6rem;
+  object-fit: contain;
+}
+
+.option-card__label {
+  font-size: var(--fs-pequeno);
+}
+
+/* Variante de texto (SAE 62, SAE 64…) */
+.option-card--text {
+  min-height: 4.5rem;
+  justify-content: center;
+  background-color: var(--color-superficie);
+}
+
+.option-card--text .option-card__label {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+
+/* Panel de ayuda del botón «Contacto» */
+.help-panel {
+  padding-block: var(--espacio-5);
+  text-align: center;
+  background-color: var(--color-seccion);
+}
+
+.help-panel__title {
+  margin-bottom: var(--espacio-1);
+  font-size: var(--fs-h3);
+}
+
+.help-panel p {
+  max-width: var(--ancho-texto);
+  margin: 0 auto var(--espacio-3);
+}
+
+/* ==========================================================
+   COMPONENTE: Confirmación (pedido enviado / agregado al carrito)
+   ========================================================== */
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding-block: var(--espacio-4);
+  text-align: center;
+}
+
+.confirmation__logo {
+  width: 8rem;
+}
+
+.confirmation__title {
+  font-size: var(--fs-titulo);
+}
+
+.confirmation__image {
+  width: 9rem;
+}
+
+/* ==========================================================
+   COMPONENTE: Presentación de marca (OSG Royco)
+   ========================================================== */
+.brand-intro {
+  padding-block: var(--espacio-5) var(--espacio-2);
+  text-align: center;
+}
+
+.brand-intro__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+
+.brand-intro__logo {
+  width: min(18rem, 70%);
+}
+
+.brand-intro__title {
+  font-size: var(--fs-titulo);
+}
+
+.brand-intro__text {
+  max-width: var(--ancho-texto);
+  font-size: var(--fs-grande);
+}
+
+/* ==========================================================
+   COMPONENTE: Catálogo de productos
+   ========================================================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-4);
+}
+
+.product-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 100%;
+  padding: var(--espacio-3);
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.product-tile:hover {
+  border-color: var(--color-primario);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.product-tile:focus-within {
+  outline: 3px solid var(--color-foco);
+  outline-offset: 2px;
+}
+
+.product-tile__image {
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  margin-bottom: var(--espacio-2);
+  object-fit: contain;
+}
+
+.product-tile__ref {
+  font-size: var(--fs-mini);
+  color: var(--color-texto-suave);
+}
+
+.product-tile__name {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-medio);
+}
+
+/* Toda la tarjeta es clicable gracias al ::after del enlace */
+.product-tile__link {
+  text-decoration: none;
+}
+
+.product-tile__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.product-tile__link:focus-visible {
+  outline: none;
+}
+
+.product-tile__desc {
+  font-size: var(--fs-pequeno);
+}
+
+.product-tile__price {
+  margin-top: auto;
+  padding-top: var(--espacio-1);
+  font-size: var(--fs-grande);
+  font-weight: var(--fw-bold);
+}
+
+/* ==========================================================
+   COMPONENTE: Vista de producto y compra por pasos
+   ========================================================== */
+.product-flow {
+  padding-block: var(--espacio-4) var(--espacio-6);
+}
+
+.product-flow__layout {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.product-step {
+  display: grid;
+  justify-items: center;
+  gap: var(--espacio-4);
+}
+
+.product-step__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-3);
+  width: min(100%, 30rem);
+}
+
+.product-step__main.form {
+  align-items: stretch;
+}
+
+.product-step__brand {
+  width: 12rem;
+}
+
+.product-step__image {
+  order: -1;
+  width: auto;
+  max-height: 14rem;
+}
+
+.product-card {
+  width: 100%;
+  padding: var(--espacio-3);
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-tarjeta);
+}
+
+.product-card__ref {
+  font-size: var(--fs-mini);
+  color: var(--color-texto-suave);
+}
+
+.product-card__name {
+  margin-block: 0.25rem var(--espacio-1);
+  font-size: clamp(1.5rem, 1vw + 1.25rem, 1.75rem);
+  font-weight: var(--fw-medio);
+}
+
+.product-card__price {
+  margin-block: var(--espacio-1);
+  font-size: clamp(1.5rem, 1vw + 1.25rem, 1.75rem);
+  font-weight: var(--fw-medio);
+}
+
+.product-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.product-card__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding-right: var(--espacio-2);
+}
+
+.product-card__meta-item + .product-card__meta-item {
+  padding-left: var(--espacio-2);
+  border-left: 1px solid var(--color-borde);
+}
+
+/* Resumen de importes (compra y carrito) */
+.summary {
+  display: grid;
+  gap: var(--espacio-1);
+  margin-bottom: var(--espacio-2);
+}
+
+.summary__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espacio-2);
+  padding-block: var(--espacio-1);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.summary__row--total {
+  font-size: var(--fs-grande);
+  font-weight: var(--fw-bold);
+  border-bottom: 0;
+}
+
+/* ==========================================================
+   COMPONENTE: Log in / Sign up
+   ========================================================== */
+.auth__layout {
+  display: grid;
+}
+
+.auth__aside {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 11rem;
+  padding: var(--espacio-3) var(--margen-lateral);
+  overflow: hidden;
+  background-color: var(--color-blanco);
+  isolation: isolate;
+}
+
+.auth__shape {
+  position: absolute;
+  z-index: -1;
+  width: 55%;
+}
+
+.auth__shape--1 {
+  top: -10%;
+  left: -8%;
+}
+
+.auth__shape--2 {
+  right: -10%;
+  bottom: -20%;
+}
+
+.auth__welcome {
+  font-size: var(--fs-titulo);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-titulo);
+}
+
+.auth__panel {
+  padding: var(--espacio-5) var(--margen-lateral);
+  color: var(--color-texto-invertido);
+  background-color: var(--color-primario);
+}
+
+.auth-form {
+  width: min(100%, 24rem);
+  margin-inline: auto;
+}
+
+.js .auth-form:not(.is-active) {
+  display: none;
+}
+
+.auth-form + .auth-form {
+  margin-top: var(--espacio-6);
+}
+
+.js .auth-form + .auth-form {
+  margin-top: 0;
+}
+
+.auth-form__title {
+  margin-bottom: var(--espacio-4);
+  font-size: var(--fs-titulo);
+}
+
+.auth-form .field__label {
+  font-weight: var(--fw-regular);
+}
+
+.auth-form .field__input {
+  color: var(--color-texto);
+}
+
+.auth-form .field__input::placeholder {
+  font-style: italic;
+}
+
+.auth-form .field__hint,
+.auth-form .field__error,
+.auth-form .form__message {
+  color: var(--color-texto-invertido);
+}
+
+.auth-form__divider {
+  margin-block: var(--espacio-3);
+  color: var(--color-texto-invertido);
+}
+
+/* ==========================================================
+   COMPONENTE: Carrito
+   ========================================================== */
+.cart {
+  padding-block: var(--espacio-5) var(--espacio-6);
+}
+
+.cart__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding-block: var(--espacio-5);
+  text-align: center;
+}
+
+.cart__empty-image {
+  width: 8rem;
+}
+
+.cart__empty-text {
+  font-size: var(--fs-subtitulo);
+  font-weight: var(--fw-bold);
+}
+
+.cart-group {
+  margin-bottom: var(--espacio-5);
+}
+
+.cart-group__title {
+  margin-bottom: var(--espacio-2);
+  font-size: var(--fs-h3);
+}
+
+.cart-group__currency {
+  font-weight: var(--fw-regular);
+  color: var(--color-texto-suave);
+}
+
+.cart-group .summary {
+  max-width: 22rem;
+  margin: var(--espacio-2) 0 0 auto;
+}
+
+.cart-table {
+  min-width: 36rem;
+  text-align: left;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 0.75rem var(--espacio-1);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.cart-table thead th {
+  font-family: var(--font-ui);
+  font-size: var(--fs-pequeno);
+  background-color: var(--color-caja);
+}
+
+.cart-table__qty {
+  width: 5rem;
+}
+
+.cart-table__remove {
+  min-height: var(--tactil-min);
+  padding-inline: var(--espacio-1);
+  color: var(--color-error);
+  text-decoration: underline;
+  background: none;
+  border: 0;
+}
+
+.cart__actions {
+  justify-content: flex-end;
+}

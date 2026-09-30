@@ -26,7 +26,7 @@
 | `--color-indicador` | `#7B7B7B` | Puntos del carrusel y de los pasos |
 | `--font-titulos` | `"Kumbh Sans", system-ui, sans-serif` | Titulares y cuerpo |
 | `--font-ui` | `"Archivo", system-ui, sans-serif` | Botones y navegación |
-| `--espacio-1` … `--espacio-8` | 0.5 / 1 / 1.5 / 2 / 3 / 4 / 6 / 8 rem | Escala de 8 px |
+| `--espacio-1` … `--espacio-7` | 0.5 / 1 / 1.5 / 2 / 3 / 4 / 6 rem | Escala de 8 px |
 | `--radio-boton` | `4px` | Botones |
 | `--radio-input` | `8px` | Campos |
 | `--radio-tarjeta` | `12px` | Tarjetas, cajas, panel del login |

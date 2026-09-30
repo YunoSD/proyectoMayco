@@ -1,0 +1,284 @@
+/* ==========================================================================
+   layout.css
+   Estructura general: contenedor, header, navegación, footer y secciones.
+   Mobile-first: aquí están los estilos de móvil; los cambios para pantallas
+   mayores están en responsive.css.
+   ========================================================================== */
+
+/* ==========================================================
+   CONTENEDOR
+   ========================================================== */
+.container {
+  width: min(100% - 2 * var(--margen-lateral), var(--ancho-max));
+  margin-inline: auto;
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-fondo);
+}
+
+.site-header__inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-1) var(--espacio-2);
+  min-height: var(--header-alto);
+}
+
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tactil-min);
+}
+
+.site-header__logo img {
+  width: 3.5rem;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  margin-left: auto;
+}
+
+/* Botón hamburguesa: solo existe cuando hay JavaScript (clase .js en <html>) */
+.site-header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: var(--tactil-min);
+  height: var(--tactil-min);
+  padding: 10px;
+  background: none;
+  border: 0;
+  border-radius: var(--radio-boton);
+}
+
+.js .site-header__toggle {
+  display: inline-flex;
+}
+
+.site-header__toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: transform var(--transicion), opacity var(--transicion);
+}
+
+/* Barras en forma de X cuando el menú está abierto */
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(2) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(3) {
+  opacity: 0;
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(4) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Variante: header transparente sobre la foto del hero (Maquinados, Fundición) */
+.site-header--overlay {
+  position: absolute;
+  inset-inline: 0;
+  color: var(--color-texto-invertido);
+  background-color: transparent;
+}
+
+/* Variante: header simplificado de los flujos (logo + título) */
+.site-header--simple .site-header__logo img {
+  width: auto;
+  height: 2.5rem;
+}
+
+.site-header__label {
+  margin-left: auto;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+}
+
+/* ==========================================================
+   NAVEGACIÓN PRINCIPAL
+   Sin JS se ve siempre (en móvil, debajo del logo).
+   Con JS, en móvil es un panel desplegable.
+   ========================================================== */
+.site-nav {
+  order: 3;
+  width: 100%;
+}
+
+.js .site-nav {
+  position: absolute;
+  top: 100%;
+  inset-inline: calc(-1 * var(--margen-lateral));
+  display: none;
+  padding: var(--espacio-2) var(--margen-lateral) var(--espacio-3);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.js .site-nav.is-open {
+  display: block;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--espacio-2);
+}
+
+.js .site-nav__list {
+  flex-direction: column;
+}
+
+.site-nav__link {
+  display: flex;
+  align-items: center;
+  min-height: var(--tactil-min);
+  font-family: var(--font-ui);
+  font-size: var(--fs-pequeno);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.site-nav__link:hover,
+.site-nav__link[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.site-footer {
+  padding-block: var(--espacio-4) var(--espacio-3);
+  font-size: var(--fs-pequeno);
+  background-color: var(--color-footer);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0 var(--espacio-2);
+}
+
+.site-footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tactil-min);
+  font-weight: var(--fw-semi);
+  text-decoration: none;
+}
+
+.site-footer__links a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__info {
+  display: grid;
+  gap: var(--espacio-3);
+  margin-block: var(--espacio-3);
+  padding-block: var(--espacio-3);
+  text-align: center;
+  border-block: 1px solid var(--color-borde);
+}
+
+.site-footer__title {
+  margin-bottom: var(--espacio-1);
+  font-size: var(--fs-cuerpo);
+}
+
+.site-footer__block a {
+  display: inline-block;
+  padding-block: 0.625rem;
+}
+
+.site-footer__copy {
+  font-weight: var(--fw-semi);
+  text-align: center;
+}
+
+/* ==========================================================
+   SECCIONES GENÉRICAS
+   ========================================================== */
+.section {
+  padding-block: var(--espacio-6);
+}
+
+.section--alt {
+  background-color: var(--color-seccion);
+}
+
+.section__title {
+  margin-bottom: var(--espacio-3);
+  font-size: var(--fs-titulo);
+}
+
+.section__intro {
+  max-width: var(--ancho-texto);
+  margin-bottom: var(--espacio-4);
+  font-size: var(--fs-grande);
+}
+
+.eyebrow {
+  margin-bottom: var(--espacio-1);
+  font-family: var(--font-ui);
+  font-weight: var(--fw-bold);
+}
+
+/* Rejilla de tarjetas que se adapta sola al ancho disponible */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: var(--espacio-3);
+}
+
+.card-grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+}
+
+/* Dos columnas: imagen y texto (una columna en móvil) */
+.split {
+  display: grid;
+  gap: var(--espacio-4);
+  align-items: center;
+}
+
+.split__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radio-tarjeta);
+}
+
+.split__text p {
+  max-width: var(--ancho-texto);
+  margin-bottom: var(--espacio-3);
+}
+
+/* Grupo de botones centrado (ocupa todo el ancho para que los botones
+   no se apilen dentro de contenedores flex centrados) */
+.button-group {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espacio-2) var(--espacio-3);
+}
