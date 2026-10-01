@@ -3,7 +3,6 @@
    - Cambia entre «Log in» y «Sign up» (también con #login / #signup en la URL).
    - Valida los formularios en el navegador con mensajes accesibles.
    - No hay servidor: al enviar solo se muestra un mensaje de demostración.
-   - «Recuérdame» guarda el usuario (nunca la contraseña) en localStorage.
    ========================================================================== */
 
 // IA: generado

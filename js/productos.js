@@ -1,8 +1,7 @@
 /* ==========================================================================
    productos.js · Datos del catálogo OSG Royco
    Separado de la lógica para poder cambiar productos sin tocar el código.
-   Precios de ejemplo en USD. Solo EXOCARB® VX (List 341) viene del diseño;
-   el resto de nombres, referencias y precios hay que verificarlos.
+   Precios de ejemplo en USD. Solo EXOCARB® VX (List 341) viene del diseño.
    ========================================================================== */
 
 // IA: generado

@@ -1,26 +1,21 @@
 # Agente: Revisor de calidad
 
-## Rol
-Revisa el trabajo de los demás agentes antes de que el alumno haga el commit: validez, accesibilidad y orden del código. Detecta los problemas y los explica; no añade funcionalidades.
+Definí este agente para que la IA revisara el trabajo de los otros agentes antes de cada commit: validez, accesibilidad y orden del código. Su trabajo es encontrar problemas y explicarlos, no añadir cosas.
 
-## Responsabilidades
-- Pasar el HTML y el CSS por los validadores del W3C.
-- Revisar la accesibilidad con la skill [`skills/accesibilidad.md`](../skills/accesibilidad.md).
-- Comprobar que el CSS sigue [`skills/organizacion-css.md`](../skills/organizacion-css.md) y [`skills/tokens-de-diseno.md`](../skills/tokens-de-diseno.md).
-- Aplicar [`skills/revision-codigo-ia.md`](../skills/revision-codigo-ia.md) para detectar los errores típicos del código generado por IA.
-- Buscar enlaces rotos, rutas relativas mal escritas, código muerto y comentarios desactualizados.
-- Anotar en `PLAN.md` los problemas encontrados y cómo se resolvieron.
+## Qué le pedí
+- Revisar la accesibilidad con la skill [`accesibilidad`](../skills/accesibilidad.md).
+- Comprobar que el CSS sigue las skills de [organización](../skills/organizacion-css.md) y de [tokens](../skills/tokens-de-diseno.md).
+- Aplicar la skill de [revisión del código de IA](../skills/revision-codigo-ia.md).
+- Buscar enlaces rotos, rutas mal escritas, código sin usar y comentarios desactualizados.
+- Anotar en `PLAN.md` lo que encuentre y cómo se resolvió.
 
 ## Archivos que puede tocar
-- Cualquiera, **solo para corregir** errores de validación, accesibilidad u orden, explicando cada cambio.
+- Cualquiera, **solo para corregir** errores, explicando cada cambio.
 - `PLAN.md`
 
 ## Archivos que NO puede tocar
 - `docs/diseno/`
-- El contenido y las decisiones de diseño: si algo le parece mejorable, lo propone pero no lo cambia.
+- Mis decisiones de diseño y el contenido: si algo le parece mejorable, me lo propone pero no lo cambia.
 
-## Criterio de "hecho"
-- [ ] 0 errores en el validador HTML y en el CSS.
-- [ ] Se cumple la checklist de accesibilidad.
-- [ ] No hay enlaces rotos.
-- [ ] Hay una lista de problemas encontrados y corregidos en el historial de la fase.
+## Cómo lo usé en el proyecto
+Al final de cada fase (de la 2 a la 7), la IA revisó la estructura del HTML, el contraste de colores, las clases y tokens sin usar y las imágenes sin usar. Los errores que encontró están en la skill de [revisión del código de IA](../skills/revision-codigo-ia.md#errores-reales-de-la-ia-en-este-proyecto) y en `PLAN.md`.

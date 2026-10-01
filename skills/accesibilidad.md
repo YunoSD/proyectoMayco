@@ -1,5 +1,7 @@
 # Skill: Accesibilidad
 
+Con esta skill definí lo mínimo para que cualquiera pueda usar la web: con teclado, con lector de pantalla y con buen contraste.
+
 ## Cuándo se aplica
 - Al escribir el HTML (Fase 2) y el JavaScript (Fase 4).
 - En cada revisión del agente revisor de calidad.
@@ -22,12 +24,3 @@
    - El contador del carrito anuncia los cambios.
 7. **Contraste:** mínimo 4.5:1 en texto normal. El texto blanco sobre foto necesita un velo oscuro detrás.
 8. **Movimiento:** respetar `prefers-reduced-motion` (el carrusel no avanza solo).
-
-## Checklist de verificación
-- [ ] Se puede navegar todo con Tab, Shift+Tab, Enter, Espacio y Esc, y el foco siempre se ve.
-- [ ] Todas las imágenes tienen `alt` (correcto o vacío).
-- [ ] Todos los campos tienen `label`.
-- [ ] Los botones solo de icono tienen `aria-label`.
-- [ ] Contraste ≥ 4.5:1: blanco sobre `#516FA6` da unos 5.0:1 ✔. El texto negro sobre `#D7D7D7` es correcto.
-- [ ] El texto sobre foto es legible gracias al velo.
-- [ ] Lighthouse Accesibilidad ≥ 90 en todas las páginas.

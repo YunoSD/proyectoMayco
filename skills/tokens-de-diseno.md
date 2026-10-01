@@ -1,5 +1,7 @@
 # Skill: Tokens de diseño
 
+Con esta skill definí que todos los valores de mi diseño (colores, fuentes, espacios, radios) vivan en un solo archivo, `css/variables.css`, para poder cambiarlos en un solo sitio.
+
 ## Cuándo se aplica
 - Al crear `css/variables.css` (Fase 3).
 - Cada vez que haga falta un color, tamaño, espaciado o radio nuevo.
@@ -33,9 +35,3 @@
 | `--ancho-max` | `1200px` | Contenedor |
 
 4. Si una captura muestra un valor que no está en la tabla, se ajusta al token más cercano. Si la diferencia es clara, se añade un token nuevo y se anota en `PLAN.md`.
-
-## Checklist de verificación
-- [ ] Buscar `#` en `css/` solo devuelve resultados en `variables.css`.
-- [ ] No hay `font-family` fuera de `variables.css` y `base.css`.
-- [ ] Todos los tokens definidos se usan (sin tokens huérfanos).
-- [ ] Cambiar `--color-primario` cambia el color en toda la web.

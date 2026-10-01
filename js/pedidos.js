@@ -4,7 +4,7 @@
    - Pedidos de prueba MY-1001 … MY-1007, uno en cada etapa.
    Los pedidos reales que se hacen en la web (cotización y carrito) se
    guardan en el navegador con Mayco.crearPedido() y empiezan en la etapa 1.
-   DATOS DE PRUEBA: ver docs/datos-de-prueba.md
+   DATOS DE PRUEBA: ver README.md, apartado 12 «Datos de prueba»
    ========================================================================== */
 
 // IA: generado

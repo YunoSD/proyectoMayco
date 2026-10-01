@@ -1,5 +1,7 @@
 # Skill: Responsive
 
+Con esta skill definí cómo debe adaptarse la web a cada tamaño de pantalla. La IA la siguió al escribir el CSS y en la revisión de la Fase 5. Los puntos 8 a 10 los añadí después, con lo que fue fallando durante el proyecto.
+
 ## Cuándo se aplica
 - Al escribir el CSS de cualquier componente (Fase 3).
 - En la revisión completa de la Fase 5.
@@ -25,16 +27,3 @@
 9. **Rejillas con un número fijo de elementos** (4 pasos, 4 datos, 6 servicios): fijar las columnas en cada breakpoint (2 × 2, 4 en fila, 3 + 3) en lugar de `auto-fit`, para que no quede un elemento suelto (3 + 1).
 10. **Elementos ocultos con `position: absolute`** (`.visually-hidden`) dentro de una caja con `overflow`: la caja necesita `position: relative`, o se escapan y crean scroll horizontal.
 11. Comprobar en las herramientas de desarrollo del navegador a 320, 375, 768, 1024 y 1440 px.
-
-## Checklist de verificación
-- [ ] No hay scroll horizontal en ningún ancho (`document.documentElement.scrollWidth <= innerWidth`).
-- [ ] Imágenes sin deformar ni desbordar.
-- [ ] Titulares con `clamp()` que no se cortan a 320 px.
-- [ ] Menú usable en móvil, que abre, cierra y funciona con teclado.
-- [ ] Áreas táctiles de al menos 44 × 44 px (botones, enlaces del menú, puntos del carrusel, iconos).
-- [ ] Grids y tarjetas que se reorganizan sin solaparse.
-- [ ] Formularios, calculadora y carrito a ancho completo en móvil.
-- [ ] Textos largos y URLs con `overflow-wrap: anywhere`.
-- [ ] Footer apilado en móvil.
-- [ ] El header no tapa contenido (si es `sticky`, con `scroll-margin-top` en las anclas).
-- [ ] `:hover` y `:focus-visible` visibles en todos los elementos interactivos.

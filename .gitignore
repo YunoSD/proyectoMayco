@@ -1,0 +1,30 @@
+# ==========================================================================
+# .gitignore · Archivos que Git NO debe guardar en el repositorio
+# ==========================================================================
+
+# --- Archivos del sistema operativo ---------------------------------------
+.DS_Store
+.AppleDouble
+__MACOSX/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Editores y herramientas ----------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- Dependencias y registros (el proyecto no usa npm, por si acaso) -------
+node_modules/
+*.log
+
+# --- Python: caché y resultados de las pruebas (docs/pruebas) -------------
+__pycache__/
+*.pyc
+
+# --- Archivos temporales y exportaciones -----------------------------------
+*.tmp
+*.zip
+audit-resultado.json

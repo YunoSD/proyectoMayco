@@ -1,5 +1,7 @@
 # Skill: Organización del CSS
 
+Con esta skill definí cómo se reparte y se escribe el CSS para que sea fácil de encontrar y de mantener.
+
 ## Cuándo se aplica
 - En toda la Fase 3 y en cualquier cambio posterior de estilos.
 
@@ -21,10 +23,3 @@
    ```
 5. **Orden de las propiedades** dentro de cada regla: posición → modelo de caja → tipografía → aspecto → otros.
 6. Selectores con poca especificidad: como mucho 2 niveles de anidación, sin IDs y sin `!important`.
-
-## Checklist de verificación
-- [ ] Todas las páginas cargan los 5 CSS en el mismo orden.
-- [ ] No hay IDs en los selectores ni `!important`.
-- [ ] Ninguna media query fuera de `responsive.css`.
-- [ ] Cada componente tiene su comentario de cabecera.
-- [ ] Sin reglas duplicadas ni vacías.

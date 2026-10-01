@@ -6,7 +6,7 @@
    salir del campo o al pulsar Enter, para no regañar mientras escribes.
    ========================================================================== */
 
-// IA: generado (corregido en la Fase 6 a petición del alumno)
+// IA: generado (ajustado en la Fase 6 a petición mía)
 (function (Mayco) {
   'use strict';
 

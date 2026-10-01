@@ -247,7 +247,7 @@
   font-weight: var(--fw-semi);
 }
 
-/* Aviso de datos de prueba (ver docs/datos-de-prueba.md) */
+/* Aviso de datos de prueba (ver README.md, apartado 12 «Datos de prueba») */
 .site-footer__aviso {
   margin-top: 0.25rem;
   font-size: var(--fs-mini);

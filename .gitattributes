@@ -1,0 +1,34 @@
+# ==========================================================================
+# .gitattributes · Cómo trata Git cada tipo de archivo
+# ==========================================================================
+
+# Todos los archivos de texto se guardan con finales de línea LF (Unix).
+# Así no hay diferencias falsas entre Windows y macOS en GitHub Desktop.
+* text=auto eol=lf
+
+# --- Archivos de texto del proyecto ---------------------------------------
+*.html text diff=html
+*.css  text diff=css
+*.js   text
+*.md   text diff=markdown
+*.json text
+*.py   text diff=python
+
+# --- Archivos binarios: Git no los modifica ni intenta comparar su contenido
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.tiff  binary
+*.ico   binary
+*.svg   binary
+*.woff  binary
+*.woff2 binary
+*.pdf   binary
+*.mp4   binary
+
+# --- Estadísticas de GitHub: la documentación no cuenta como código --------
+docs/** linguist-documentation
+agents/** linguist-documentation
+skills/** linguist-documentation
