@@ -68,7 +68,7 @@
   const salidaTotal = formulario.querySelector('[data-precio-total]');
 
   campoPiezas.max = producto.stock;
-  poner('[data-precio-unitario]', `$${producto.precio} dlls`);
+  poner('[data-precio-unitario]', `$${producto.precio} dlls + IVA`);
 
   function leerPiezas() {
     const piezas = Number(campoPiezas.value);
@@ -83,7 +83,7 @@
 
   function actualizarTotal() {
     const lectura = leerPiezas();
-    salidaTotal.textContent = lectura.error ? '—' : `$${Mayco.numero(lectura.piezas * producto.precio)} dlls`;
+    salidaTotal.textContent = lectura.error ? '—' : `$${Mayco.numero(lectura.piezas * producto.precio)} dlls + IVA`;
   }
 
   campoPiezas.addEventListener('input', () => {

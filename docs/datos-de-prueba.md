@@ -27,8 +27,9 @@ Esta web es un **proyecto académico (PEC 6)**. Muchos datos no son reales: son 
 | Densidad (g/cm³) | SAE 62: 8.72 · SAE 64: 8.95 · SAE 65: 8.77 · SAE 68: 7.45 · SAE 660: 8.93 · SAE 600: 8.80 | **Orientativas** por familia de bronce. SAE 600 usa una densidad genérica. Verificar con la ficha técnica | `js/bronce.js` (`Mayco.calidades`) |
 | Tipo y aplicaciones de cada calidad SAE | Ver tabla «Calidades y precios» | **Orientativos**. SAE 600 aparece como «Consultar» | `pages/fundicion.html` |
 | Peso calculado | Volumen × densidad | **Aproximado**: no tiene en cuenta tolerancias, sobremedida ni mermas | `js/bronce.js` (`Mayco.calcularPeso`) |
+| Densidad de la calculadora de Fundición | 8.8 g/cm³ (**promedio** del bronce; la calculadora ya no pide la calidad) | Aproximada | `js/bronce.js` (`Mayco.densidadPromedio`) |
 | Tiempo de entrega de la fundición | `[PLACEHOLDER]` | Sin dato | `pages/fundicion.html` («Nuestra fundición en datos») |
-| IVA | 16 % | Tasa general de México; verificar si cambia | `js/carrito.js` (constante `IVA`) |
+| IVA | 16 %, aplicado a MXN **y a USD** (Fase 6) | Tasa general de México; verificar si cambia | `js/carrito.js` (constante `IVA`) |
 
 ---
 
@@ -39,6 +40,19 @@ Esta web es un **proyecto académico (PEC 6)**. Muchos datos no son reales: son 
 | EXOCARB® VX Taps (List 341, $430 dlls, 30 piezas, 2–3 días) | Viene del **diseño de Figma**; no se ha comprobado con OSG | `js/productos.js` y `pages/osgRoyco.html` |
 | Resto de productos (A-TAP®, A-SFT®, AE-VMS, ADO y variantes M6/M10/M12) | **Nombres de líneas reales de OSG**, pero descripciones, referencias («List [PLACEHOLDER]»), precios, existencias y plazos son **de ejemplo** | `js/productos.js` y `pages/osgRoyco.html` (hay que cambiar los dos) |
 | Imagen de las tarjetas | La misma foto (EXOCARB® VX) para todos los productos | `pages/osgRoyco.html` |
+
+---
+
+## 3 bis. Stock de entrega inmediata y pedidos (Inicio · Fase 6)
+
+| Dato | Estado | Dónde se cambia |
+|---|---|---|
+| **Stock de entrega inmediata** (9 piezas: barras, bujes y placas en SAE 62, 64, 65, 68 y 660, con medidas y piezas disponibles) | **Inventado**. El peso y el precio por pieza se calculan con las densidades y precios por kilo de la sección 2 | Tabla «Stock de entrega inmediata» de `index.html` |
+| **Pedidos de prueba** MY-1001 … MY-1007 (uno en cada etapa) | **Inventados** para probar «Rastrea tu pedido» | `js/pedidos.js` (`pedidosPrueba`) |
+| **Etapas de un pedido** (recibido, fundición, desmolde y limpieza, maquinado, inspección, listo, entregado) | Simplificación del proceso real | `js/pedidos.js` (`etapasPedido`) |
+| **Números de pedido nuevos** (MY-2000 … MY-9999) | Se crean al «Hacer pedido» o «Finalizar pedido» y se guardan **solo en tu navegador**; siempre se quedan en «Pedido recibido» | `js/main.js` (`Mayco.crearPedido`) |
+| **Folio de maquinados** (MQ-xxxx) | Número aleatorio; la solicitud **no se envía** a nadie | `js/cotizacion-maquinados.js` |
+| Plazo de respuesta de la cotización de maquinados | `[PLACEHOLDER] días hábiles` | `pages/cotizacion-maquinados.html` (paso 7) |
 
 ---
 
@@ -64,6 +78,8 @@ Esta web es un **proyecto académico (PEC 6)**. Muchos datos no son reales: son 
 | **Carrito** | Se guarda en el navegador del usuario (`localStorage`). Si se borran los datos del navegador, se pierde. |
 | **Monedas** | USD y MXN no se suman ni se convierten. No hay tipo de cambio. |
 | **Correo de ayuda** | Abre el programa de correo con un mensaje ya escrito, dirigido a `ventas@ejemplo.com`. |
+| **Cotización de maquinados** | Reúne los datos y muestra un folio. No envía nada ni sube el archivo adjunto a ningún servidor. No calcula precio (un maquinado no se cotiza por kilo). |
+| **Agregar desde el stock** | Agrega la pieza al carrito en MXN, con el máximo de piezas disponibles. |
 
 ---
 
@@ -71,5 +87,6 @@ Esta web es un **proyecto académico (PEC 6)**. Muchos datos no son reales: son 
 
 | Dato | Estado |
 |---|---|
+| `assets/img/carrusel-barras-bronce.webp` | Foto original de 400 × 400 px. Llena la diapositiva sin deformarse (`object-fit: cover`), pero al ampliarse tanto se ve algo borrosa. Una foto de más resolución se vería nítida. |
 | `assets/img/PROVISIONAL-barra-redonda.webp` | Recortada de la captura del diseño; sustituir por una foto original. Solo se muestra para la forma «barra». |
-| Copyright «Mayco © 2025» | Copiado del diseño de Figma. |
+| Copyright «© 2026 Mayco Company» | El año indica cuándo se publicó la web (no es una licencia ni el año de fundación). |

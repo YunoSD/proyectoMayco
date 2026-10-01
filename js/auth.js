@@ -38,6 +38,14 @@
 
   mostrar(window.location.hash === '#signup' ? 'signup' : 'login', false);
 
+  // Si la dirección cambia a #login o #signup sin recargar (por ejemplo,
+  // con «Atrás» del navegador), se muestra el formulario que toca.
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#signup' || window.location.hash === '#login') {
+      mostrar(window.location.hash.slice(1), true);
+    }
+  });
+
   /* ==========================================================
      VALIDACIÓN
      Cada regla devuelve un mensaje de error o una cadena vacía.
@@ -48,10 +56,10 @@
     'signup-nombre': (valor) => (valor.trim() ? '' : 'Escribe tu nombre.'),
     'signup-correo': (valor) => {
       if (!valor.trim()) return 'Escribe tu correo.';
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim()) ? '' : 'El correo no tiene un formato válido (ejemplo: nombre@empresa.com).';
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim()) ? '' : 'Correo no válido (ej.: nombre@empresa.com).';
     },
-    'signup-password': (valor) => (valor.length >= 8 ? '' : 'La contraseña debe tener al menos 8 caracteres.'),
-    'signup-confirmar': (valor) => (valor && valor === formSignup.querySelector('#signup-password').value ? '' : 'Las contraseñas no coinciden.'),
+    'signup-password': (valor) => (valor.length >= 8 ? '' : 'Mínimo 8 caracteres.'),
+    'signup-confirmar': (valor) => (valor && valor === formSignup.querySelector('#signup-password').value ? '' : 'No coinciden.'),
   };
 
   function validar(formulario) {

@@ -55,16 +55,9 @@
     gap: var(--espacio-3);
   }
 
-  /* --- Footer --- */
-  .site-footer__links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .site-footer__info {
-    grid-template-columns: repeat(3, 1fr);
-    text-align: left;
+  /* --- Footer: 2 columnas --- */
+  .site-footer__inner {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* --- Carrusel: flechas fuera de la diapositiva --- */
@@ -165,9 +158,13 @@
     justify-content: flex-end;
   }
 
-  /* --- Tarjetas Stock / Pedidos --- */
+  /* --- «¿Qué necesitas?»: 3 tarjetas en fila --- */
   .promo__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tracker {
+    padding: var(--espacio-5);
   }
 
   /* --- Cotización: puntos en vertical a la izquierda --- */
@@ -223,27 +220,42 @@
     max-height: 26rem;
   }
 
-  /* --- Log in / Sign up: ilustración y panel lado a lado --- */
-  .auth__layout {
-    grid-template-columns: 1fr 1fr;
-    min-height: calc(100svh - var(--header-alto));
+  /* --- Mi cuenta: logo y bienvenida a la izquierda, tarjeta a la derecha --- */
+  .auth {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    padding-inline: clamp(1.5rem, 6vw, 6rem);
   }
 
-  .auth__aside {
-    min-height: auto;
-    padding: var(--espacio-5);
+  .auth__logo {
+    grid-column: 1;
+    grid-row: 1;
   }
 
-  .auth__shape {
-    width: 80%;
+  .auth__welcome {
+    grid-column: 1;
+    grid-row: 3;
   }
 
-  .auth__panel {
-    display: flex;
-    align-items: center;
-    margin: var(--espacio-2);
-    padding: var(--espacio-6) var(--espacio-4);
-    border-radius: var(--radio-tarjeta);
+  .auth__card {
+    grid-column: 2;
+    grid-row: 1 / -1;
+  }
+
+  .auth__shape--1,
+  .auth__shape--2 {
+    opacity: 0.9;
+  }
+
+  .auth__shape--1 {
+    top: 16%;
+    left: -4%;
+  }
+
+  .auth__shape--2 {
+    right: auto;
+    bottom: -14%;
+    left: 30%;
   }
 }
 
@@ -251,6 +263,22 @@
    ESCRITORIO · desde 1024 px
    ========================================================== */
 @media (min-width: 1024px) {
+
+  /* --- Footer: marca + 3 columnas --- */
+  .site-footer__inner {
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+  }
+
+  /* --- Rastreo: texto y formulario lado a lado --- */
+  .tracker {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    column-gap: var(--espacio-6);
+  }
+
+  .tracker__result {
+    grid-column: 1 / -1;
+  }
 
   /* --- Rejilla de servicios (6): 3 + 3 --- */
   .card-grid {
@@ -301,11 +329,6 @@
   .data-table {
     font-size: var(--fs-cuerpo);
   }
-
-  /* --- Log in: más aire en el panel --- */
-  .auth__panel {
-    padding-inline: var(--espacio-6);
-  }
 }
 
 /* ==========================================================
@@ -322,12 +345,41 @@
     padding-block: var(--espacio-6) var(--espacio-7);
   }
 
-  .promo-card {
-    padding: var(--espacio-5);
-  }
-
   .quote-step {
     padding-block: var(--espacio-5);
+  }
+}
+
+/* ==========================================================
+   PANTALLAS MUY BAJAS (≤ 600 px de alto) · Mi cuenta
+   Se aprietan los espacios para que el formulario quepa sin scroll.
+   ========================================================== */
+@media (max-height: 600px) {
+
+  .auth {
+    gap: 0.25rem;
+    padding-block: 0.5rem;
+  }
+
+  .auth__welcome {
+    font-size: var(--fs-h3);
+  }
+
+  .auth-form__title {
+    margin-bottom: 0.5rem;
+  }
+
+  .auth-form__switch {
+    margin-top: 0;
+  }
+
+  .auth__card {
+    padding-block: 0.75rem;
+  }
+
+  /* La nota «Mínimo 8 caracteres» repite lo que dice el error: aquí sobra */
+  .auth-form .field__hint {
+    display: none;
   }
 }
 

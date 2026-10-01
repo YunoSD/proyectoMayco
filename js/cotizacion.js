@@ -156,7 +156,8 @@
       if (validar(paso)) irA(paso + 1);
       return;
     }
-    confirmar('Pedido mandado correctamente', false);
+    const numero = Mayco.crearPedido(cotizacion ? `${Mayco.nombrePiezas(cotizacion.forma, cotizacion.piezas)} · ${cotizacion.detalle}` : 'Pedido de bronce');
+    confirmar('Pedido mandado correctamente', false, numero);
   });
 
   // Al elegir una opción se borra el error del grupo
@@ -193,86 +194,34 @@
     confirmar('Agregado al carrito', true);
   }
 
-  function confirmar(titulo, verCarrito) {
+  function confirmar(titulo, verCarrito, numeroPedido) {
     formulario.querySelector('[data-confirmacion-titulo]').textContent = titulo;
+    const folio = formulario.querySelector('[data-folio]');
+    if (folio) {
+      folio.hidden = !numeroPedido;
+      if (numeroPedido) folio.querySelector('[data-folio-numero]').textContent = numeroPedido;
+    }
     const enlace = formulario.querySelector('[data-ver-carrito]');
     if (enlace) enlace.hidden = !verCarrito;
     irA(ULTIMO_PASO);
   }
 
   /* ==========================================================
-     PANEL DE AYUDA («Contacto»)
-     Se abre como ventana modal: foco dentro, Esc o clic fuera para cerrar.
+     VENTANA DE AYUDA («Contacto»): la lógica está en main.js
      ========================================================== */
-  const panel = document.getElementById('ayuda-cotizacion');
-  if (panel) {
-    const cerrarBoton = panel.querySelector('[data-cerrar-ayuda]');
-    const titulo = panel.querySelector('.help-panel__title');
-    const correo = panel.querySelector('[data-ayuda-correo]');
-    let origen = null;
-
-    panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-modal', 'true');
-    if (cerrarBoton) cerrarBoton.hidden = false;
-
-    function textoCorreo() {
-      const lineas = [
-        'Hola, necesito ayuda con una cotización.',
-        '',
-        `Tipo de bronce: ${textoOpcion('tipo') || 'sin elegir'}`,
-        `Calidad: ${textoOpcion('calidad') || 'sin elegir'}`,
-        `Forma: ${textoOpcion('forma') || 'sin elegir'}`,
-        `Medidas: ${campoMedidas.value.trim() || 'sin indicar'} (${textoOpcion('unidad')})`,
-        `Número de piezas: ${campoPiezas.value || 'sin indicar'}`,
-      ];
-      return lineas.join('\n');
-    }
-
-    function abrir(boton) {
-      origen = boton;
-      if (correo) {
-        const asunto = encodeURIComponent('Ayuda con mi cotización');
-        correo.href = `mailto:ventas@ejemplo.com?subject=${asunto}&body=${encodeURIComponent(textoCorreo())}`;
-      }
-      panel.classList.add('is-open');
-      titulo.focus();
-    }
-
-    function cerrar() {
-      panel.classList.remove('is-open');
-      if (origen) origen.focus();
-    }
-
-    document.addEventListener('click', (evento) => {
-      const boton = evento.target.closest('.btn--contact');
-      if (boton) {
-        evento.preventDefault();
-        abrir(boton);
-      } else if (evento.target === panel || evento.target.closest('[data-cerrar-ayuda]')) {
-        cerrar();
-      }
-    });
-
-    panel.addEventListener('keydown', (evento) => {
-      if (evento.key === 'Escape') {
-        cerrar();
-        return;
-      }
-      // Mantiene el foco dentro del panel mientras está abierto
-      if (evento.key === 'Tab') {
-        const enfocables = [...panel.querySelectorAll('a[href], button:not([hidden])')];
-        const primero = enfocables[0];
-        const ultimo = enfocables[enfocables.length - 1];
-        if (evento.shiftKey && (document.activeElement === primero || document.activeElement === titulo)) {
-          evento.preventDefault();
-          ultimo.focus();
-        } else if (!evento.shiftKey && document.activeElement === ultimo) {
-          evento.preventDefault();
-          primero.focus();
-        }
-      }
-    });
+  function textoCorreo() {
+    return [
+      'Hola, necesito ayuda con una cotización de bronce.',
+      '',
+      `Tipo de bronce: ${textoOpcion('tipo') || 'sin elegir'}`,
+      `Calidad: ${textoOpcion('calidad') || 'sin elegir'}`,
+      `Forma: ${textoOpcion('forma') || 'sin elegir'}`,
+      `Medidas: ${campoMedidas.value.trim() || 'sin indicar'} (${textoOpcion('unidad')})`,
+      `Número de piezas: ${campoPiezas.value || 'sin indicar'}`,
+    ].join('\n');
   }
+
+  Mayco.iniciarAyuda(textoCorreo, 'Ayuda con mi cotización');
 
   actualizarAyudaMedidas();
   irA(1, false);

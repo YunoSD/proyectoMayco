@@ -18,7 +18,7 @@
 7. **Componentes con adaptación propia:**
    - Carrusel: una diapositiva visible y flechas de 44 px.
    - Cotización: las opciones pasan de 4 columnas a 2 y luego a 1. El indicador de pasos pasa a horizontal arriba en móvil.
-   - Login/signup: el panel azul ocupa el 100 % y la ilustración se reduce o se oculta.
+   - Mi cuenta: sin header ni footer y sin scroll en ninguna pantalla (`min-height: 100svh`, espacios en `vh`, contraseña y confirmación lado a lado, `overflow: clip` para que `#login`/`#signup` no desplacen la caja).
    - Carrito: la tabla se convierte en tarjetas apiladas.
    - Footer: enlaces en columna.
 8. **Tablas:** en móvil, cada fila es una tarjeta y cada celda muestra su encabezado con `data-label` y `td::before { content: attr(data-label) }`. Desde 768 px vuelven a ser tabla. Así no hay desplazamiento lateral.

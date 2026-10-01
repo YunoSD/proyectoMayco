@@ -16,11 +16,28 @@
 /* ==========================================================
    HEADER
    ========================================================== */
+/* Translúcido con desenfoque: lo que pasa por debajo (fotos, tarjetas)
+   se ve borroso y el texto del header siempre se lee (Fase 6). */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   background-color: var(--color-fondo);
+  border-bottom: 1px solid var(--color-header-borde);
+  transition: transform 300ms ease;
+}
+
+/* Se esconde al bajar y vuelve al subir (lo controla main.js) */
+.site-header.is-oculto {
+  transform: translateY(-100%);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header {
+    background-color: var(--color-header);
+    -webkit-backdrop-filter: saturate(1.8) blur(20px);
+    backdrop-filter: saturate(1.8) blur(20px);
+  }
 }
 
 .site-header__inner {
@@ -87,14 +104,6 @@
 
 .site-header__toggle[aria-expanded="true"] .site-header__toggle-bar:nth-child(4) {
   transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Variante: header transparente sobre la foto del hero (Maquinados, Fundición) */
-.site-header--overlay {
-  position: absolute;
-  inset-inline: 0;
-  color: var(--color-texto-invertido);
-  background-color: transparent;
 }
 
 /* Variante: header simplificado de los flujos (logo + título) */
@@ -164,63 +173,85 @@
 }
 
 /* ==========================================================
-   FOOTER
+   FOOTER (rediseño Fase 6)
+   Marca + 3 columnas (navegación, contacto, ubicación) y barra inferior
+   con el copyright y el aviso de datos de prueba.
    ========================================================== */
 .site-footer {
-  padding-block: var(--espacio-4) var(--espacio-3);
   font-size: var(--fs-pequeno);
   background-color: var(--color-footer);
+  border-top: 4px solid var(--color-primario);
 }
 
-.site-footer__links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0 var(--espacio-2);
+.site-footer__inner {
+  display: grid;
+  gap: var(--espacio-4);
+  padding-block: var(--espacio-5) var(--espacio-4);
+}
+
+.site-footer__logo {
+  width: 10rem;
+  margin-bottom: var(--espacio-2);
+}
+
+.site-footer__brand p {
+  max-width: 32ch;
+  color: var(--color-texto-suave);
+}
+
+.site-footer__title {
+  margin-bottom: var(--espacio-1);
+  font-family: var(--font-ui);
+  font-size: var(--fs-pequeno);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .site-footer__links a {
   display: inline-flex;
   align-items: center;
   min-height: var(--tactil-min);
-  font-weight: var(--fw-semi);
   text-decoration: none;
 }
 
-.site-footer__links a:hover {
+.site-footer__links a:hover,
+.site-footer__list a:hover {
   text-decoration: underline;
 }
 
-.site-footer__info {
-  display: grid;
-  gap: var(--espacio-3);
-  margin-block: var(--espacio-3);
-  padding-block: var(--espacio-3);
+.site-footer__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  min-height: var(--tactil-min);
+}
+
+.site-footer__list .icon {
+  color: var(--color-primario);
+}
+
+.site-footer__list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tactil-min);
+  text-decoration: none;
+}
+
+.site-footer__bottom {
+  padding-block: var(--espacio-2);
   text-align: center;
-  border-block: 1px solid var(--color-borde);
-}
-
-.site-footer__title {
-  margin-bottom: var(--espacio-1);
-  font-size: var(--fs-cuerpo);
-}
-
-.site-footer__block a {
-  display: inline-block;
-  padding-block: 0.625rem;
+  background-color: var(--color-btn-secundario);
 }
 
 .site-footer__copy {
   font-weight: var(--fw-semi);
-  text-align: center;
 }
 
 /* Aviso de datos de prueba (ver docs/datos-de-prueba.md) */
 .site-footer__aviso {
-  margin-top: var(--espacio-1);
+  margin-top: 0.25rem;
   font-size: var(--fs-mini);
   color: var(--color-texto-suave);
-  text-align: center;
 }
 
 /* ==========================================================

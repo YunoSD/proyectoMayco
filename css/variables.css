@@ -28,7 +28,11 @@
   --color-blanco: #ffffff;            /* Fondos blancos (ilustración del login) */
   --color-error: #b3261e;             /* Mensajes de error (propuesta) */
   --color-foco: #1f3a6b;              /* Anillo de foco del teclado (propuesta) */
+  --color-foco-suave: rgb(81 111 166 / 0.3);    /* Halo del campo activo en Mi cuenta */
+  --color-mascara: #000000;           /* Parte visible de una máscara (mask-image): solo cuenta su opacidad */
   --color-velo: rgb(0 0 0 / 0.45);    /* Velo sobre las fotos para leer el texto */
+  --color-header: rgb(245 245 245 / 0.5);        /* Header translúcido: 0.5 es el mínimo que mantiene el texto ≥ 4.5:1 sobre una foto negra */
+  --color-header-borde: rgb(0 0 0 / 0.08);       /* Línea inferior del header */
   --color-hover-oscuro: rgb(0 0 0 / 0.06);      /* Hover sobre fondo claro */
   --color-hover-claro: rgb(255 255 255 / 0.5);  /* Hover dentro de la caja de opciones */
 

@@ -108,6 +108,99 @@ window.Mayco = window.Mayco || {};
   };
 
   /* ==========================================================
+     PEDIDOS (Fase 6)
+     Al confirmar un pedido se crea un número MY-xxxx que se guarda
+     en el navegador para poder rastrearlo desde el inicio.
+     ========================================================== */
+  const CLAVE_PEDIDOS = 'mayco-pedidos';
+
+  Mayco.leerPedidos = function () {
+    try {
+      const datos = JSON.parse(localStorage.getItem(CLAVE_PEDIDOS));
+      return datos && typeof datos === 'object' ? datos : {};
+    } catch (error) {
+      return {};
+    }
+  };
+
+  Mayco.crearPedido = function (descripcion) {
+    const pedidos = Mayco.leerPedidos();
+    let numero;
+    do {
+      numero = `MY-${2000 + Math.floor(Math.random() * 8000)}`;   // MY-1001…1007 son de prueba
+    } while (pedidos[numero]);
+    pedidos[numero] = { descripcion, etapa: 1, fecha: new Date().toISOString().slice(0, 10) };
+    try {
+      localStorage.setItem(CLAVE_PEDIDOS, JSON.stringify(pedidos));
+    } catch (error) {
+      // Sin localStorage el número se muestra, pero no se podrá rastrear
+    }
+    return numero;
+  };
+
+  /* ==========================================================
+     VENTANA DE AYUDA («Contacto» en las cotizaciones)
+     Ventana modal: foco dentro, Esc o clic fuera para cerrar.
+     textoCorreo() devuelve el cuerpo del correo con lo elegido.
+     ========================================================== */
+  Mayco.iniciarAyuda = function (textoCorreo, asuntoCorreo) {
+    const panel = document.getElementById('ayuda-cotizacion');
+    if (!panel) return;
+    const cerrarBoton = panel.querySelector('[data-cerrar-ayuda]');
+    const titulo = panel.querySelector('.help-panel__title');
+    const correo = panel.querySelector('[data-ayuda-correo]');
+    let origen = null;
+
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    if (cerrarBoton) cerrarBoton.hidden = false;
+
+    function abrir(boton) {
+      origen = boton;
+      if (correo) {
+        correo.href = `mailto:ventas@ejemplo.com?subject=${encodeURIComponent(asuntoCorreo)}&body=${encodeURIComponent(textoCorreo())}`;
+      }
+      panel.classList.add('is-open');
+      titulo.focus();
+    }
+
+    function cerrar() {
+      panel.classList.remove('is-open');
+      if (origen) origen.focus();
+    }
+
+    document.addEventListener('click', (evento) => {
+      const boton = evento.target.closest('.btn--contact');
+      if (boton) {
+        evento.preventDefault();
+        abrir(boton);
+      } else if (evento.target === panel || evento.target.closest('[data-cerrar-ayuda]')) {
+        cerrar();
+      }
+    });
+
+    panel.addEventListener('keydown', (evento) => {
+      if (evento.key === 'Escape') {
+        cerrar();
+        return;
+      }
+      // Mantiene el foco dentro del panel mientras está abierto
+      if (evento.key === 'Tab') {
+        const enfocables = [...panel.querySelectorAll('a[href], button:not([hidden])')];
+        const primero = enfocables[0];
+        const ultimo = enfocables[enfocables.length - 1];
+        if (evento.shiftKey && (document.activeElement === primero || document.activeElement === titulo)) {
+          evento.preventDefault();
+          ultimo.focus();
+        } else if (!evento.shiftKey && document.activeElement === ultimo) {
+          evento.preventDefault();
+          primero.focus();
+        }
+      }
+    });
+  };
+
+  /* ==========================================================
      CONTADOR DEL CARRITO EN EL HEADER
      ========================================================== */
   function actualizarContador() {
@@ -173,7 +266,48 @@ window.Mayco = window.Mayco || {};
     });
   }
 
+  /* ==========================================================
+     HEADER QUE SE ESCONDE (Fase 6)
+     Al bajar se oculta para ver las secciones a pantalla completa;
+     al subir vuelve a aparecer. Nunca se oculta si el menú está
+     abierto o si el foco del teclado está dentro del header.
+     ========================================================== */
+  function iniciarHeaderOculto() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+    let ultimaPosicion = window.scrollY;
+    let pendiente = false;
+
+    function revisar() {
+      pendiente = false;
+      const posicion = window.scrollY;
+      const diferencia = posicion - ultimaPosicion;
+      const menuAbierto = !!header.querySelector('.site-nav.is-open');
+      const focoDentro = header.contains(document.activeElement);
+
+      if (posicion <= header.offsetHeight || menuAbierto || focoDentro) {
+        header.classList.remove('is-oculto');
+      } else if (diferencia > 6) {
+        header.classList.add('is-oculto');      // Bajando
+      } else if (diferencia < -6) {
+        header.classList.remove('is-oculto');   // Subiendo
+      }
+      if (Math.abs(diferencia) > 6) ultimaPosicion = posicion;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!pendiente) {
+        pendiente = true;
+        window.requestAnimationFrame(revisar);
+      }
+    }, { passive: true });
+
+    // Si alguien tabula hasta el header, aparece
+    header.addEventListener('focusin', () => header.classList.remove('is-oculto'));
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    iniciarHeaderOculto();
     iniciarMenu();
     actualizarContador();
   });

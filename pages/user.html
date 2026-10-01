@@ -23,65 +23,59 @@
 <body class="page page--user">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <!-- IA: generado · Header simplificado (flujos de cotización y cuenta, como en el diseño) -->
-  <header class="site-header site-header--simple">
-    <div class="site-header__inner container">
-      <a class="site-header__logo" href="../index.html">
-        <img src="../assets/img/logo-mayco-company.webp" alt="Mayco Company, ir al inicio" width="180" height="64">
-      </a>
-      <p class="site-header__label">Mi cuenta</p>
-    </div>
-  </header>
-
+  <!-- IA: generado · Mi cuenta (rediseño Fase 6: sin header ni footer, todo en una pantalla) -->
   <main id="contenido" class="auth">
-    <h1 class="visually-hidden">Mi cuenta</h1>
-    <div class="auth__layout">
-      <!-- IA: generado · Ilustración de bienvenida -->
-      <div class="auth__aside">
-        <img class="auth__shape auth__shape--1" src="../assets/img/login-cromo-1.webp" alt="" width="615" height="630">
-        <img class="auth__shape auth__shape--2" src="../assets/img/login-cromo-2.webp" alt="" width="575" height="399">
-        <p class="auth__welcome">¡Bienvenido!</p>
-      </div>
+    <h1 class="visually-hidden">Mi cuenta en Mayco Company</h1>
 
-      <div class="auth__panel">
-        <!-- IA: generado · Log in -->
-        <section class="auth-form is-active" id="login" aria-labelledby="login-titulo">
-          <h2 class="auth-form__title" id="login-titulo" tabindex="-1">Log in</h2>
-          <form class="form" data-login novalidate>
-            <div class="field field--icon">
-              <label class="visually-hidden" for="login-usuario">Usuario</label>
-              <svg class="icon icon--sm field__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4.5"/><path d="M3.5 21c1.4-4.2 4.6-6.5 8.5-6.5s7.1 2.3 8.5 6.5"/></svg>
-              <input class="field__input" id="login-usuario" name="usuario" type="text" placeholder="Username" autocomplete="username" required aria-describedby="login-usuario-error">
-              <p class="field__error" id="login-usuario-error" aria-live="polite"></p>
-            </div>
-            <div class="field field--icon">
-              <label class="visually-hidden" for="login-password">Contraseña</label>
-              <svg class="icon icon--sm field__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
-              <input class="field__input" id="login-password" name="password" type="password" placeholder="Password" autocomplete="current-password" required aria-describedby="login-password-error">
-              <p class="field__error" id="login-password-error" aria-live="polite"></p>
-            </div>
-            <label class="checkbox"><input type="checkbox" name="recordar"> Recuérdame</label>
-            <p class="form__message" aria-live="polite" data-form-mensaje></p>
-            <button class="btn btn--light btn--block" type="submit">Log in</button>
-          </form>
-          <hr class="auth-form__divider">
-          <a class="btn btn--light btn--block" href="#signup" data-auth-cambiar>Sign up</a>
-        </section>
+    <!-- Decoración: formas cromadas del diseño original -->
+    <img class="auth__shape auth__shape--1" src="../assets/img/login-cromo-1.webp" alt="" width="615" height="630">
+    <img class="auth__shape auth__shape--2" src="../assets/img/login-cromo-2.webp" alt="" width="575" height="399">
 
-        <!-- IA: generado · Sign up -->
-        <section class="auth-form" id="signup" aria-labelledby="signup-titulo">
-          <h2 class="auth-form__title" id="signup-titulo" tabindex="-1">Sign up</h2>
-          <form class="form" data-signup novalidate>
-            <div class="field">
-              <label class="field__label" for="signup-nombre">Nombre</label>
-              <input class="field__input" id="signup-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="signup-nombre-error">
-              <p class="field__error" id="signup-nombre-error" aria-live="polite"></p>
-            </div>
-            <div class="field">
-              <label class="field__label" for="signup-correo">Correo</label>
-              <input class="field__input" id="signup-correo" name="correo" type="email" autocomplete="email" required aria-describedby="signup-correo-error">
-              <p class="field__error" id="signup-correo-error" aria-live="polite"></p>
-            </div>
+    <a class="auth__logo" href="../index.html">
+      <img src="../assets/img/logo-mayco-company.webp" alt="Mayco Company, volver al inicio" width="180" height="64">
+    </a>
+
+    <p class="auth__welcome">¡Bienvenido!</p>
+
+    <div class="auth__card">
+      <!-- IA: generado · Iniciar sesión -->
+      <section class="auth-form is-active" id="login" aria-labelledby="login-titulo">
+        <h2 class="auth-form__title" id="login-titulo" tabindex="-1">Iniciar sesión</h2>
+        <form class="form" data-login novalidate>
+          <div class="field field--icon">
+            <label class="field__label" for="login-usuario">Usuario o correo</label>
+            <svg class="icon icon--sm field__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4.5"/><path d="M3.5 21c1.4-4.2 4.6-6.5 8.5-6.5s7.1 2.3 8.5 6.5"/></svg>
+            <input class="field__input" id="login-usuario" name="usuario" type="text" autocomplete="username" required aria-describedby="login-usuario-error">
+            <p class="field__error" id="login-usuario-error" aria-live="polite"></p>
+          </div>
+          <div class="field field--icon">
+            <label class="field__label" for="login-password">Contraseña</label>
+            <svg class="icon icon--sm field__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+            <input class="field__input" id="login-password" name="password" type="password" autocomplete="current-password" required aria-describedby="login-password-error">
+            <p class="field__error" id="login-password-error" aria-live="polite"></p>
+          </div>
+          <label class="checkbox"><input type="checkbox" name="recordar"> Recuérdame</label>
+          <p class="form__message" aria-live="polite" data-form-mensaje></p>
+          <button class="btn btn--primary btn--block" type="submit">Iniciar sesión</button>
+        </form>
+        <p class="auth-form__switch">¿No tienes cuenta? <a href="#signup" data-auth-cambiar>Crear cuenta</a></p>
+      </section>
+
+      <!-- IA: generado · Crear cuenta -->
+      <section class="auth-form" id="signup" aria-labelledby="signup-titulo">
+        <h2 class="auth-form__title" id="signup-titulo" tabindex="-1">Crear cuenta</h2>
+        <form class="form" data-signup novalidate>
+          <div class="field">
+            <label class="field__label" for="signup-nombre">Nombre</label>
+            <input class="field__input" id="signup-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="signup-nombre-error">
+            <p class="field__error" id="signup-nombre-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="signup-correo">Correo</label>
+            <input class="field__input" id="signup-correo" name="correo" type="email" autocomplete="email" required aria-describedby="signup-correo-error">
+            <p class="field__error" id="signup-correo-error" aria-live="polite"></p>
+          </div>
+          <div class="auth-form__pair">
             <div class="field">
               <label class="field__label" for="signup-password">Contraseña</label>
               <input class="field__input" id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="signup-password-ayuda signup-password-error">
@@ -89,54 +83,17 @@
               <p class="field__error" id="signup-password-error" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label class="field__label" for="signup-confirmar">Confirmar contraseña</label>
+              <label class="field__label" for="signup-confirmar">Confirmar</label>
               <input class="field__input" id="signup-confirmar" name="confirmar" type="password" autocomplete="new-password" required aria-describedby="signup-confirmar-error">
               <p class="field__error" id="signup-confirmar-error" aria-live="polite"></p>
             </div>
-            <p class="form__message" aria-live="polite" data-form-mensaje></p>
-            <button class="btn btn--text btn--block" type="submit">Sign up</button>
-          </form>
-          <hr class="auth-form__divider">
-          <a class="btn btn--text btn--block" href="#login" data-auth-cambiar>Log in</a>
-        </section>
-      </div>
+          </div>
+          <p class="form__message" aria-live="polite" data-form-mensaje></p>
+          <button class="btn btn--primary btn--block" type="submit">Crear cuenta</button>
+        </form>
+        <p class="auth-form__switch">¿Ya tienes cuenta? <a href="#login" data-auth-cambiar>Iniciar sesión</a></p>
+      </section>
     </div>
   </main>
-
-  <!-- IA: generado · Footer común (igual en todas las páginas) -->
-  <footer class="site-footer">
-    <div class="site-footer__inner container">
-      <nav class="site-footer__nav" aria-label="Pie de página">
-        <ul class="site-footer__links">
-          <li><a href="../index.html">Página de inicio</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-          <li><a href="#ubicacion">Ubicación</a></li>
-          <li><a href="fundicion.html#calculadora">Calculadora de peso aproximado</a></li>
-          <li><a href="cotizacion.html">Cotizaciones</a></li>
-        </ul>
-      </nav>
-
-      <div class="site-footer__info">
-        <section class="site-footer__block" id="contacto" aria-labelledby="footer-contacto">
-          <h2 class="site-footer__title" id="footer-contacto">Contacto</h2>
-          <!-- PLACEHOLDER: sustituir teléfono y correo por los reales -->
-          <p><a href="tel:+520000000000">[PLACEHOLDER: teléfono]</a></p>
-          <p><a href="mailto:ventas@ejemplo.com">[PLACEHOLDER: correo de ventas]</a></p>
-          <p>Lunes a viernes, [PLACEHOLDER: horario]</p>
-        </section>
-        <section class="site-footer__block" id="ubicacion" aria-labelledby="footer-ubicacion">
-          <h2 class="site-footer__title" id="footer-ubicacion">Ubicación</h2>
-          <address>[PLACEHOLDER: calle y número]<br>[PLACEHOLDER: colonia, ciudad y código postal]</address>
-        </section>
-        <section class="site-footer__block" aria-labelledby="footer-empresa">
-          <h2 class="site-footer__title" id="footer-empresa">Mayco Company</h2>
-          <p>Fabricamos y vendemos bronce y otras aleaciones. Maquinados, fundición, aceros, plásticos de ingeniería y herramientas de corte OSG Royco.</p>
-        </section>
-      </div>
-
-      <p class="site-footer__copy">Mayco © 2025 · Todos los derechos reservados</p>
-      <p class="site-footer__aviso">Proyecto académico: precios, existencias, datos de contacto y pedidos son de prueba.</p>
-    </div>
-  </footer>
 </body>
 </html>

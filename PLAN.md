@@ -56,6 +56,24 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 | D23 | Ajustes visuales | El alumno cambiará tamaños e imágenes al ver el producto final. | Prompt 05 |
 | D24 | Datos de prueba | Todos los datos de ejemplo (contacto, precios, densidades, productos, existencias) y las funciones simuladas (login, pedidos) se listan en `docs/datos-de-prueba.md`. El footer de todas las páginas avisa: «Proyecto académico: precios, existencias, datos de contacto y pedidos son de prueba». | Prompt 06 |
 | D25 | Fase extra | Antes del README, nueva Fase 6: la IA pregunta página por página qué cambiar y lo aplica. | Prompt 06 |
+| D26 | Inicio a pantalla completa | Las secciones OSG Royco, Maquinados y Fundición ocupan toda la pantalla (`100svh`). | Prompt 07 |
+| D27 | Header translúcido | Fondo semitransparente con desenfoque (`backdrop-filter`) en todas las páginas; sobre fotos se ve borroso y el menú se lee. Si el navegador no lo admite, el fondo es opaco. Se elimina la variante de header blanco sobre foto. | Prompt 07 |
+| D28 | Cotización de maquinados | Nueva página `pages/cotizacion-maquinados.html` (7 pasos). No calcula precio: un maquinado depende de material, horas de máquina, preparación, tolerancias y acabados, así que reúne los datos para que un técnico responda. La página lo explica. | Prompt 07 |
+| D29 | Tarjetas del inicio | Rediseño: título «¿Qué necesitas?», 3 tarjetas centradas con imagen arriba (Stock, Pedidos según modelos, Peso) y toda la tarjeta clicable. | Prompt 07 |
+| D30 | Stock de entrega inmediata | La tarjeta «Stock» despliega una tabla con 9 piezas inventadas (forma, calidad, medidas, peso, disponibles, precio) que se pueden agregar al carrito. | Prompt 07 |
+| D31 | Rastrea tu pedido | Bloque con número de pedido y línea de 7 etapas. Los pedidos hechos en la web reciben un número MY-xxxx que se puede rastrear. | Prompt 07 |
+| D32 | Footer y © | Footer rediseñado (marca, navegación, contacto con iconos, ubicación y barra inferior). El año del © indica la publicación de la web; se actualiza a 2026. | Prompt 07 |
+| D33 | Carrusel: fotos completas | *Sustituida por D39.* Las fotos se mostraban enteras sobre un fondo desenfocado de sí mismas. | Prompt 08 |
+| D34 | Header que se esconde | Al bajar se oculta y al subir vuelve a aparecer. Nunca se oculta con el menú abierto ni con el foco del teclado dentro. | Prompt 08 |
+| D35 | Header más translúcido | Opacidad del 75 % al 50 %. Es el mínimo que mantiene el texto del menú en 4.9:1 de contraste sobre una foto negra (45 % bajaba a 4.1:1, por debajo de 4.5:1). | Prompt 08 |
+| D36 | Imagen de la tarjeta «Peso» | *Imagen sustituida en D38.* Las tarjetas ya no ponen fondo detrás de la imagen. | Prompt 08 |
+| D37 | Calculadora de Fundición | Solo forma, unidades y medidas: se quitan calidad y número de piezas. Usa la densidad promedio del bronce (8.8 g/cm³), calcula al escribir y muestra gramos por debajo de 1 kg. Forma y unidades se mantienen porque sin ellas no se puede saber si «4 x 2 x 10» es un buje o una placa, ni si son pulgadas o mm. | Prompt 08 |
+| D38 | Imagen de «Peso» | Foto de dos bujes que aporta el alumno (ya sin fondo). | Prompt 09 |
+| D39 | Carrusel | Solo la foto, llenando la diapositiva sin deformarse (`object-fit: cover`). Sin fondo desenfocado. | Prompt 09 |
+| D40 | Calculadora sin botón ni fórmula | El peso aparece al escribir; Enter muestra el error si lo hay. | Prompt 09 |
+| D41 | OSG Royco + IVA | Precios «$430 dlls + IVA» en catálogo, ficha y compra. En el carrito, el bloque USD también suma IVA 16 % y total. | Prompt 09 |
+| D42 | Mi cuenta rediseñada | Sin header ni footer. Fondo blanco, logo largo arriba a la izquierda (enlace al inicio), «¡Bienvenido!» abajo a la izquierda, tarjeta blanca con campos de borde gris y botón azul de ancho completo. Títulos en español («Iniciar sesión», «Crear cuenta») y cambio entre formularios con un enlace. | Prompt 09 |
+| D43 | Mi cuenta sin scroll | Cabe en una pantalla en 6 tamaños (1440×900 a 320×568), también con errores. Única excepción: 320×568 con los 4 errores a la vez (13 px), porque reducir más los campos los dejaría por debajo de 44 px. | Prompt 09 |
 ---
 
 ## 4. Fases
@@ -202,3 +220,59 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 - **Resultado final:** 0 fallos en las 75 combinaciones y 42/42 pruebas de funcionamiento correctas.
 - **Aprendizaje añadido a `skills/responsive.md`:** puntos 8 (tablas como tarjetas), 9 (rejillas sin elementos sueltos) y 10 (elementos ocultos y `position: relative`).
 - **Commit (lo hace el alumno):** `Fase 5: responsive a detalle y documento de datos de prueba`. Hash: `[PLACEHOLDER]`.
+
+### Fase 6: Ajustes del alumno · Inicio
+- **Fecha:** 2026-10-01
+- **Prompt:** [`docs/prompts/07-fase6-inicio.md`](docs/prompts/07-fase6-inicio.md)
+- **Qué generó la IA:**
+  - Inicio:
+    - Secciones a pantalla completa y header translúcido con desenfoque (D26, D27).
+    - Carrusel con las dos fotos nuevas. La de las caras de barras está recortada para que no se vea el suelo.
+    - Sección «¿Qué necesitas?» rediseñada (D29), con stock de entrega inmediata (D30) y «Rastrea tu pedido» (D31).
+  - Nueva `pages/cotizacion-maquinados.html` + `js/cotizacion-maquinados.js` (D28). Enlazada desde el carrusel (corona sinfín), la sección Maquinados del inicio, `maquinados.html` y el footer.
+  - `js/pedidos.js` (etapas y pedidos de prueba) y `js/inicio.js` (stock y rastreo).
+  - La ventana de ayuda «Contacto» pasa a `main.js` para que la usen las dos cotizaciones.
+  - «Hacer pedido» (bronce) y «Finalizar pedido» (carrito) muestran ahora un número de pedido rastreable.
+  - Footer rediseñado (D32). `docs/datos-de-prueba.md` ampliado con el stock, los pedidos y los folios.
+- **Lo que la IA no pudo hacer:** crear una foto nueva «llena de caras de barras». Se recortó la foto del alumno; al venir de una imagen de 400 px, se ve algo borrosa en pantallas grandes.
+- **Comprobaciones de la IA:**
+  - 42 pruebas anteriores: 42/42 (no se rompió nada).
+  - 25 pruebas nuevas: 25/25. Cubren pantalla completa, header, enlaces de cotización, stock (abrir, agregar, cerrar), rastreo (correcto e inexistente), números de pedido rastreables y la cotización de maquinados completa con errores y ayuda.
+  - Auditoría responsive con 5 escenarios nuevos × 5 anchos.
+  - HTML sin errores. Ninguna clase CSS ni token sin uso.
+- **Errores encontrados y corregidos por la IA durante la fase:**
+  - La tabla de stock a 768 px ensanchaba la página: el nombre de la pieza no se podía partir porque una regla de `responsive.css` (`white-space: nowrap`) tenía la misma prioridad y anulaba la corrección. Además, la caja de las tablas se puede deslizar si algo no cabe.
+  - En la cotización de maquinados a 320 px, «Reparación o reposición» no cabía en dos columnas. Ahora las opciones usan 1 columna a 320 px y 2 desde 375 px.
+- **Commit (lo hace el alumno):** `Fase 6 · Inicio: pantalla completa, header translúcido, stock, rastreo de pedidos, cotización de maquinados y footer`. Hash: `[PLACEHOLDER]`.
+
+### Fase 6: Ajustes del alumno · Inicio (2.ª vuelta) y Fundición
+- **Fecha:** 2026-10-01
+- **Prompt:** [`docs/prompts/08-fase6-inicio-ajustes-y-fundicion.md`](docs/prompts/08-fase6-inicio-ajustes-y-fundicion.md)
+- **Qué generó la IA:** D33 a D37 (carrusel con fotos completas, header que se esconde y más translúcido, imagen de «Peso» sin fondo y calculadora simplificada).
+- **Comprobaciones de la IA:**
+  - 14 pruebas nuevas: header que se esconde y reaparece (también con teclado), transparencia, fotos completas, calculadora al escribir, gramos y errores.
+  - Pruebas anteriores 42/42 y 25/25. La de la calculadora se actualizó: 25,37 kg con la densidad promedio, antes 25,14 kg con SAE 62.
+  - Auditoría responsive sin fallos. Sin clases ni imágenes sin uso: se borraron las copias `bronce-barra-y-placa.webp` y `bronce-barras-redondas.webp`; los originales del alumno siguen en su carpeta.
+- **Errores encontrados y corregidos por la IA durante la fase:**
+  - Al salir del campo de medidas con un error, la calculadora devolvía el cursor al campo y no dejaba salir (trampa de foco). Ahora solo muestra el mensaje.
+  - Con piezas pequeñas en mm el resultado salía «0 kg». Ahora se muestra en gramos.
+  - Con el 45 % de opacidad pedido para el header, el contraste bajaba de 4.5:1. Se dejó en el 50 % (D35).
+- **Commit (lo hace el alumno):** `Fase 6 · Inicio y Fundición: fotos completas, header que se esconde, imagen sin fondo y calculadora simplificada`. Hash: `[PLACEHOLDER]`.
+
+### Fase 6: Ajustes del alumno · Inicio, Fundición, OSG Royco, Mi cuenta (Aceros y Carrito sin cambios)
+- **Fecha:** 2026-10-01
+- **Prompt:** [`docs/prompts/09-fase6-varias-paginas.md`](docs/prompts/09-fase6-varias-paginas.md)
+- **Qué generó la IA:** D38 a D43.
+- **Comprobaciones de la IA:**
+  - Las tres baterías de pruebas: 42/42, 25/25 y 30/30. Entre las nuevas: carrusel en `cover`, calculadora sin botón ni fórmula, «+ IVA» en catálogo, ficha y carrito, y Mi cuenta sin scroll ni header/footer en 6 tamaños.
+  - Auditoría responsive sin fallos. HTML sin errores. Ninguna clase, token ni imagen sin uso.
+- **Errores encontrados y corregidos por la IA durante la fase:**
+  - Si la dirección cambiaba de `#login` a `#signup` sin recargar (botón «Atrás»), el formulario no cambiaba. Se añadió `hashchange` en `auth.js`.
+  - Con la cuenta abierta como `user.html#login`, el navegador desplazaba la caja con `overflow: hidden` para «llegar» al formulario y el logo quedaba fuera de la vista. Se cambió a `overflow: clip`.
+  - En móvil, «¡Bienvenido!» salía arriba en vez de abajo (orden del HTML). Se fijó con `grid-row`.
+  - El logo quedaba encima de una forma cromada oscura y no se veía: se movieron las formas.
+  - El campo «Confirmar» quedaba más bajo que «Contraseña»: `align-content: start` en `.field`.
+  - Las capturas cromadas tenían un borde cortado en recto: se difuminó con `mask-image`.
+  - Con todos los errores, el registro no cabía en móvil: mensajes más cortos, la nota de la contraseña cede su sitio al error y espacios más pequeños en pantallas bajas.
+  - Una prueba anterior medía sin querer el formulario de inicio de sesión en lugar del de registro (por el fallo de `#signup`). Corregido el fallo, la prueba mide bien.
+- **Commit (lo hace el alumno):** `Fase 6 · Inicio, Fundición, OSG Royco y Mi cuenta: carrusel, calculadora sin botón, precios + IVA y nueva página de cuenta`. Hash: `[PLACEHOLDER]`.

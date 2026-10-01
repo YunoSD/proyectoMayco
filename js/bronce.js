@@ -26,6 +26,10 @@ window.Mayco = window.Mayco || {};
     sae600: { nombre: 'SAE 600', precioKg: 220, densidad: 8.80 },   // Densidad genérica del bronce
   };
 
+  // Densidad promedio del bronce: la usa la calculadora de fundición (Fase 6),
+  // que ya no pide la calidad.
+  Mayco.densidadPromedio = { nombre: 'bronce (promedio)', precioKg: 0, densidad: 8.8 };
+
   Mayco.formas = {
     barra: {
       medidas: 2,
@@ -129,7 +133,7 @@ window.Mayco = window.Mayco || {};
       formula = `${Mayco.numero(espesor)} × ${Mayco.numero(ancho)} × ${Mayco.numero(largo)}`;
     }
 
-    const datos = Mayco.calidades[calidad];
+    const datos = Mayco.calidades[calidad] || Mayco.densidadPromedio;
     const kgPieza = (volumen * datos.densidad) / 1000;
     const cantidad = piezas || 1;
 

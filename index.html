@@ -19,6 +19,8 @@
   <!-- main.js se carga sin defer para añadir la clase .js antes de pintar la página -->
   <script src="js/main.js"></script>
   <script src="js/carrusel.js" defer></script>
+  <script src="js/pedidos.js" defer></script>
+  <script src="js/inicio.js" defer></script>
 </head>
 <body class="page page--inicio">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -90,14 +92,14 @@
                 <p class="slide__subtitle">A partir de 20 dientes</p>
                 <div class="button-group">
                   <a class="btn btn--secondary" href="pages/maquinados.html">Mostrar más</a>
-                  <a class="btn btn--primary" href="pages/cotizacion.html">Solicitar cotización</a>
+                  <a class="btn btn--primary" href="pages/cotizacion-maquinados.html?servicio=corona">Solicitar cotización</a>
                 </div>
               </div>
             </article>
           </li>
           <li class="carousel__slide" aria-roledescription="diapositiva" aria-label="2 de 3">
             <article class="slide">
-              <img class="slide__image" src="assets/img/bronce-barras-redondas.webp" alt="Barras redondas de bronce de distintos diámetros" width="1200" height="630" loading="lazy" decoding="async">
+              <img class="slide__image" src="assets/img/carrusel-barras-bronce.webp" alt="Barras redondas de bronce apiladas" width="400" height="400" loading="lazy" decoding="async">
               <div class="slide__content">
                 <p class="slide__eyebrow">Stock permanente</p>
                 <h3 class="slide__title">Barras de bronce</h3>
@@ -111,7 +113,7 @@
           </li>
           <li class="carousel__slide" aria-roledescription="diapositiva" aria-label="3 de 3">
             <article class="slide">
-              <img class="slide__image" src="assets/img/bronce-barra-y-placa.webp" alt="Barra redonda y placa de bronce" width="1200" height="630" loading="lazy" decoding="async">
+              <img class="slide__image" src="assets/img/carrusel-barras-hexagonales.webp" alt="Barras de bronce hexagonales y redondas de distintos tamaños" width="900" height="596" loading="lazy" decoding="async">
               <div class="slide__content">
                 <p class="slide__eyebrow">Fundición a pedido</p>
                 <h3 class="slide__title">Bujes y piezas especiales</h3>
@@ -148,7 +150,7 @@
         <p class="feature__subtitle">Hechos con calidad</p>
         <div class="button-group">
           <a class="btn btn--secondary" href="pages/maquinados.html">Mostrar más</a>
-          <a class="btn btn--primary" href="pages/cotizacion.html">Solicitar cotización</a>
+          <a class="btn btn--primary" href="pages/cotizacion-maquinados.html">Solicitar cotización</a>
         </div>
       </div>
     </section>
@@ -165,25 +167,174 @@
       </div>
     </section>
 
-    <!-- IA: generado · Sección 4: tarjetas -->
-    <section class="promo" aria-label="Stock y pedidos">
-      <div class="promo__grid container">
-        <article class="promo-card">
-          <div class="promo-card__text">
-            <h2 class="promo-card__title">Stock</h2>
-            <p class="promo-card__subtitle">Entrega inmediata</p>
-            <a class="btn btn--primary" href="pages/fundicion.html#calidades">Bronce</a>
+    <!-- IA: generado · Sección 4: tarjetas (rediseño de la Fase 6) -->
+    <section class="promo" aria-labelledby="promo-titulo">
+      <div class="container">
+        <h2 class="promo__title" id="promo-titulo">¿Qué necesitas?</h2>
+        <ul class="promo__grid">
+          <li class="promo-card">
+            <img class="promo-card__image" src="assets/img/stock-barras-bronce.webp" alt="" width="586" height="483" loading="lazy" decoding="async">
+            <div class="promo-card__body">
+              <h3 class="promo-card__title">Stock</h3>
+              <p class="promo-card__subtitle">Entrega inmediata</p>
+              <p class="promo-card__text">Barras, bujes y placas de bronce listos para llevar hoy.</p>
+              <a class="promo-card__action" href="#stock-inmediato" aria-expanded="false" aria-controls="stock-inmediato" data-stock-abrir>Ver stock</a>
+            </div>
+          </li>
+          <li class="promo-card">
+            <img class="promo-card__image" src="assets/img/pedidos-bujes-modelos.webp" alt="" width="514" height="315" loading="lazy" decoding="async">
+            <div class="promo-card__body">
+              <h3 class="promo-card__title">Pedidos</h3>
+              <p class="promo-card__subtitle">Según modelos</p>
+              <p class="promo-card__text">Fundimos tu pieza en la calidad SAE que necesitas.</p>
+              <a class="promo-card__action" href="pages/cotizacion.html">Cotizar pieza</a>
+            </div>
+          </li>
+          <li class="promo-card">
+            <img class="promo-card__image" src="assets/img/peso-bujes-bronce.webp" alt="" width="600" height="356" loading="lazy" decoding="async">
+            <div class="promo-card__body">
+              <h3 class="promo-card__title">Peso</h3>
+              <p class="promo-card__subtitle">Antes de pedir</p>
+              <p class="promo-card__text">Barra, buje o placa, en pulgadas o milímetros.</p>
+              <a class="promo-card__action" href="pages/fundicion.html#calculadora">Usar calculadora</a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- IA: generado · Stock de entrega inmediata (datos de prueba, ver docs/datos-de-prueba.md) -->
+        <section class="stock-panel" id="stock-inmediato" aria-labelledby="stock-titulo" data-stock-panel>
+          <div class="stock-panel__head">
+            <h3 class="stock-panel__title" id="stock-titulo" tabindex="-1">Stock de entrega inmediata</h3>
+            <p class="note">Precios por pieza en pesos mexicanos más IVA, calculados con el precio por kilo de cada calidad.</p>
           </div>
-          <img class="promo-card__image" src="assets/img/stock-barras-bronce.webp" alt="Barras redondas de bronce apiladas" width="586" height="483" loading="lazy" decoding="async">
-        </article>
-        <article class="promo-card">
-          <div class="promo-card__text">
-            <h2 class="promo-card__title">Pedidos</h2>
-            <p class="promo-card__subtitle">Según modelos</p>
-            <a class="btn btn--primary" href="pages/cotizacion.html">Cotización</a>
+          <div class="table-wrapper">
+            <table class="data-table stock-table">
+              <caption class="visually-hidden">Piezas de bronce en existencia</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Pieza</th>
+                  <th scope="col">Medidas</th>
+                  <th scope="col">Peso aprox.</th>
+                  <th scope="col">Disponibles</th>
+                  <th scope="col">Precio por pieza</th>
+                  <th scope="col"><span class="visually-hidden">Agregar al carrito</span></th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">Barra redonda <span class="stock-table__calidad">SAE 64</span></th>
+                <td data-label="Medidas">1″ × 12″</td>
+                <td data-label="Peso aprox.">1.38 kg</td>
+                <td data-label="Disponibles">40 pzs</td>
+                <td data-label="Precio por pieza">$324.84</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-01" data-nombre="Barra redonda de bronce SAE 64" data-detalle="1″ × 12″ · 1.38 kg por pieza · stock" data-precio="324.84" data-max="40">Agregar<span class="visually-hidden"> Barra redonda SAE 64 1″ × 12″ al carrito</span></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Barra redonda <span class="stock-table__calidad">SAE 64</span></th>
+                <td data-label="Medidas">2″ × 12″</td>
+                <td data-label="Peso aprox.">5.53 kg</td>
+                <td data-label="Disponibles">25 pzs</td>
+                <td data-label="Precio por pieza">$1,299.34</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-02" data-nombre="Barra redonda de bronce SAE 64" data-detalle="2″ × 12″ · 5.53 kg por pieza · stock" data-precio="1299.34" data-max="25">Agregar<span class="visually-hidden"> Barra redonda SAE 64 2″ × 12″ al carrito</span></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Barra redonda <span class="stock-table__calidad">SAE 62</span></th>
+                <td data-label="Medidas">3″ × 12″</td>
+                <td data-label="Peso aprox.">12.12 kg</td>
+                <td data-label="Disponibles">18 pzs</td>
+                <td data-label="Precio por pieza">$2,787.78</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-03" data-nombre="Barra redonda de bronce SAE 62" data-detalle="3″ × 12″ · 12.12 kg por pieza · stock" data-precio="2787.78" data-max="18">Agregar<span class="visually-hidden"> Barra redonda SAE 62 3″ × 12″ al carrito</span></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Barra redonda <span class="stock-table__calidad">SAE 660</span></th>
+                <td data-label="Medidas">4″ × 13″</td>
+                <td data-label="Peso aprox.">23.91 kg</td>
+                <td data-label="Disponibles">10 pzs</td>
+                <td data-label="Precio por pieza">$5,498.37</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-04" data-nombre="Barra redonda de bronce SAE 660" data-detalle="4″ × 13″ · 23.91 kg por pieza · stock" data-precio="5498.37" data-max="10">Agregar<span class="visually-hidden"> Barra redonda SAE 660 4″ × 13″ al carrito</span></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Buje <span class="stock-table__calidad">SAE 64</span></th>
+                <td data-label="Medidas">2″ × 1″ × 12″</td>
+                <td data-label="Peso aprox.">4.15 kg</td>
+                <td data-label="Disponibles">15 pzs</td>
+                <td data-label="Precio por pieza">$974.51</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-05" data-nombre="Buje de bronce SAE 64" data-detalle="2″ × 1″ × 12″ · 4.15 kg por pieza · stock" data-precio="974.51" data-max="15">Agregar<span class="visually-hidden"> Buje SAE 64 2″ × 1″ × 12″ al carrito</span></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Buje <span class="stock-table__calidad">SAE 660</span></th>
+                <td data-label="Medidas">3 1/2″ × 2″ × 12″</td>
+                <td data-label="Peso aprox.">11.38 kg</td>
+                <td data-label="Disponibles">8 pzs</td>
+                <td data-label="Precio por pieza">$2,617.01</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-06" data-nombre="Buje de bronce SAE 660" data-detalle="3 1/2″ × 2″ × 12″ · 11.38 kg por pieza · stock" data-precio="2617.01" data-max="8">Agregar<span class="visually-hidden"> Buje SAE 660 3 1/2″ × 2″ × 12″ al carrito</span></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Buje <span class="stock-table__calidad">SAE 65</span></th>
+                <td data-label="Medidas">5″ × 3″ × 10″</td>
+                <td data-label="Peso aprox.">18.06 kg</td>
+                <td data-label="Disponibles">6 pzs</td>
+                <td data-label="Precio por pieza">$4,244.03</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-07" data-nombre="Buje de bronce SAE 65" data-detalle="5″ × 3″ × 10″ · 18.06 kg por pieza · stock" data-precio="4244.03" data-max="6">Agregar<span class="visually-hidden"> Buje SAE 65 5″ × 3″ × 10″ al carrito</span></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Placa <span class="stock-table__calidad">SAE 62</span></th>
+                <td data-label="Medidas">1/2″ × 6″ × 12″</td>
+                <td data-label="Peso aprox.">5.14 kg</td>
+                <td data-label="Disponibles">12 pzs</td>
+                <td data-label="Precio por pieza">$1,183.17</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-08" data-nombre="Placa de bronce SAE 62" data-detalle="1/2″ × 6″ × 12″ · 5.14 kg por pieza · stock" data-precio="1183.17" data-max="12">Agregar<span class="visually-hidden"> Placa SAE 62 1/2″ × 6″ × 12″ al carrito</span></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Placa <span class="stock-table__calidad">SAE 68</span></th>
+                <td data-label="Medidas">1″ × 4″ × 12″</td>
+                <td data-label="Peso aprox.">5.86 kg</td>
+                <td data-label="Disponibles">5 pzs</td>
+                <td data-label="Precio por pieza">$1,289.20</td>
+                <td class="stock-table__accion">
+                  <button class="btn btn--primary btn--sm" type="button" data-stock-agregar data-id="st-09" data-nombre="Placa de bronce SAE 68" data-detalle="1″ × 4″ × 12″ · 5.86 kg por pieza · stock" data-precio="1289.2" data-max="5">Agregar<span class="visually-hidden"> Placa SAE 68 1″ × 4″ × 12″ al carrito</span></button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
           </div>
-          <img class="promo-card__image" src="assets/img/pedidos-bujes-modelos.webp" alt="Bujes y placa de bronce fabricados según modelo" width="514" height="315" loading="lazy" decoding="async">
-        </article>
+          <p class="form__message stock-panel__mensaje" aria-live="polite" data-stock-mensaje></p>
+        </section>
+
+        <!-- IA: generado · Rastreo de pedidos (pedidos de prueba en js/pedidos.js) -->
+        <section class="tracker" id="rastrear" aria-labelledby="rastrear-titulo">
+          <div class="tracker__intro">
+            <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 6h11v10H2zM13 10h4l4 3v3h-8"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>
+            <h3 class="tracker__title" id="rastrear-titulo">Rastrea tu pedido</h3>
+            <p>¿Ya tienes un pedido confirmado? Escribe tu número de pedido y mira en qué etapa está.</p>
+            <p class="note">Pedidos de prueba: del MY-1001 al MY-1007.</p>
+          </div>
+          <form class="tracker__form" data-rastreo novalidate>
+            <div class="field">
+              <label class="field__label" for="numero-pedido">Número de pedido</label>
+              <input class="field__input" id="numero-pedido" name="pedido" type="text" placeholder="MY-1004" autocomplete="off" autocapitalize="characters" required aria-describedby="numero-pedido-error">
+              <p class="field__error" id="numero-pedido-error" aria-live="polite"></p>
+            </div>
+            <button class="btn btn--primary" type="submit">Consultar</button>
+          </form>
+          <div class="tracker__result" aria-live="polite" data-rastreo-resultado hidden></div>
+        </section>
       </div>
     </section>
   </main>
@@ -191,36 +342,45 @@
   <!-- IA: generado · Footer común (igual en todas las páginas) -->
   <footer class="site-footer">
     <div class="site-footer__inner container">
-      <nav class="site-footer__nav" aria-label="Pie de página">
+      <div class="site-footer__brand">
+        <img class="site-footer__logo" src="assets/img/logo-mayco-company.webp" alt="Mayco Company" width="160" height="57" loading="lazy">
+        <p>Fabricamos y vendemos bronce y otras aleaciones. Maquinados, fundición, aceros, plásticos de ingeniería y herramientas de corte OSG Royco.</p>
+      </div>
+
+      <nav class="site-footer__block" aria-labelledby="footer-nav">
+        <h2 class="site-footer__title" id="footer-nav">Navegación</h2>
         <ul class="site-footer__links">
           <li><a href="index.html">Página de inicio</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-          <li><a href="#ubicacion">Ubicación</a></li>
           <li><a href="pages/fundicion.html#calculadora">Calculadora de peso aproximado</a></li>
-          <li><a href="pages/cotizacion.html">Cotizaciones</a></li>
+          <li><a href="pages/cotizacion.html">Cotizar bronce</a></li>
+          <li><a href="pages/cotizacion-maquinados.html">Cotizar maquinados</a></li>
+          <li><a href="index.html#rastrear">Rastrea tu pedido</a></li>
         </ul>
       </nav>
 
-      <div class="site-footer__info">
-        <section class="site-footer__block" id="contacto" aria-labelledby="footer-contacto">
-          <h2 class="site-footer__title" id="footer-contacto">Contacto</h2>
-          <!-- PLACEHOLDER: sustituir teléfono y correo por los reales -->
-          <p><a href="tel:+520000000000">[PLACEHOLDER: teléfono]</a></p>
-          <p><a href="mailto:ventas@ejemplo.com">[PLACEHOLDER: correo de ventas]</a></p>
-          <p>Lunes a viernes, [PLACEHOLDER: horario]</p>
-        </section>
-        <section class="site-footer__block" id="ubicacion" aria-labelledby="footer-ubicacion">
-          <h2 class="site-footer__title" id="footer-ubicacion">Ubicación</h2>
-          <address>[PLACEHOLDER: calle y número]<br>[PLACEHOLDER: colonia, ciudad y código postal]</address>
-        </section>
-        <section class="site-footer__block" aria-labelledby="footer-empresa">
-          <h2 class="site-footer__title" id="footer-empresa">Mayco Company</h2>
-          <p>Fabricamos y vendemos bronce y otras aleaciones. Maquinados, fundición, aceros, plásticos de ingeniería y herramientas de corte OSG Royco.</p>
-        </section>
-      </div>
+      <section class="site-footer__block" id="contacto" aria-labelledby="footer-contacto">
+        <h2 class="site-footer__title" id="footer-contacto">Contacto</h2>
+        <!-- PLACEHOLDER: sustituir teléfono, correo y horario por los reales (ver docs/datos-de-prueba.md) -->
+        <ul class="site-footer__list">
+          <li><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><a href="tel:+520000000000">[PLACEHOLDER: teléfono]</a></li>
+          <li><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:ventas@ejemplo.com">[PLACEHOLDER: correo de ventas]</a></li>
+          <li><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Lunes a viernes, [PLACEHOLDER: horario]</span></li>
+        </ul>
+      </section>
 
-      <p class="site-footer__copy">Mayco © 2025 · Todos los derechos reservados</p>
-      <p class="site-footer__aviso">Proyecto académico: precios, existencias, datos de contacto y pedidos son de prueba.</p>
+      <section class="site-footer__block" id="ubicacion" aria-labelledby="footer-ubicacion">
+        <h2 class="site-footer__title" id="footer-ubicacion">Ubicación</h2>
+        <ul class="site-footer__list">
+          <li><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><address>[PLACEHOLDER: calle y número]<br>[PLACEHOLDER: colonia, ciudad y código postal]</address></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="site-footer__bottom">
+      <div class="container">
+        <p class="site-footer__copy">© 2026 Mayco Company · Todos los derechos reservados</p>
+        <p class="site-footer__aviso">Proyecto académico: precios, existencias, datos de contacto y pedidos son de prueba.</p>
+      </div>
     </div>
   </footer>
 </body>

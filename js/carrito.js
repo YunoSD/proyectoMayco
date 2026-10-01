@@ -1,7 +1,7 @@
 /* ==========================================================================
    carrito.js · Carrito
    Pinta el carrito guardado en localStorage agrupado por moneda (decisión D12):
-   - Herramientas OSG Royco en USD (subtotal).
+   - Herramientas OSG Royco en USD (subtotal + IVA 16 % + total).
    - Bronce en MXN (subtotal + IVA 16 % + total).
    Las dos monedas no se suman. Permite cambiar cantidades, eliminar y
    finalizar el pedido (simulado: no hay servidor).
@@ -147,6 +147,9 @@
      Vacía el carrito y muestra la confirmación del diseño.
      ========================================================== */
   function finalizar() {
+    const articulos = Mayco.leerCarrito();
+    const piezas = articulos.reduce((suma, item) => suma + item.cantidad, 0);
+    const numero = Mayco.crearPedido(`Pedido del carrito: ${piezas} ${piezas === 1 ? 'pieza' : 'piezas'} (${articulos.map((item) => item.nombre).join(', ')})`);
     Mayco.guardarCarrito([]);
     contenido.hidden = true;
     vacio.hidden = true;
@@ -168,12 +171,23 @@
     titulo.tabIndex = -1;
     titulo.textContent = 'Pedido mandado correctamente';
 
+    const folio = document.createElement('p');
+    folio.className = 'confirmation__folio';
+    folio.append('Tu número de pedido es ');
+    const numeroFuerte = document.createElement('strong');
+    numeroFuerte.textContent = numero;
+    folio.append(numeroFuerte, '. Guárdalo para ');
+    const rastrear = document.createElement('a');
+    rastrear.href = '../index.html#rastrear';
+    rastrear.textContent = 'rastrear tu pedido';
+    folio.append(rastrear, '.');
+
     const enlace = document.createElement('a');
     enlace.className = 'btn btn--primary';
     enlace.href = '../index.html';
     enlace.textContent = 'Volver al inicio';
 
-    confirmacion.append(titulo, imagen, enlace);
+    confirmacion.append(titulo, folio, imagen, enlace);
     contenido.after(confirmacion);
     titulo.focus();
   }
