@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/responsive.css">
+  <!-- main.js se carga sin defer para añadir la clase .js antes de pintar la página -->
+  <script src="../js/main.js"></script>
+  <script src="../js/bronce.js" defer></script>
+  <script src="../js/cotizacion.js" defer></script>
 </head>
 <body class="page page--cotizacion">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -46,7 +50,7 @@
       <form class="quote__form" data-cotizacion novalidate>
         <!-- IA: generado · Paso 1: tipo de bronce -->
         <section class="quote-step is-active" data-step="1" aria-labelledby="paso1-titulo">
-          <h2 class="quote-step__title" id="paso1-titulo">¿Qué tipo <span class="quote-step__subtitle">de bronce estás buscando?</span></h2>
+          <h2 class="quote-step__title" id="paso1-titulo" tabindex="-1">¿Qué tipo <span class="quote-step__subtitle">de bronce estás buscando?</span></h2>
           <fieldset class="option-grid option-grid--4">
             <legend class="visually-hidden">Tipo de bronce</legend>
             <label class="option-card">
@@ -78,7 +82,7 @@
 
         <!-- IA: generado · Paso 2: calidad -->
         <section class="quote-step" data-step="2" aria-labelledby="paso2-titulo">
-          <h2 class="quote-step__title" id="paso2-titulo">¿Qué calidad <span class="quote-step__subtitle">de bronce estás buscando?</span></h2>
+          <h2 class="quote-step__title" id="paso2-titulo" tabindex="-1">¿Qué calidad <span class="quote-step__subtitle">de bronce estás buscando?</span></h2>
           <fieldset class="option-grid option-grid--3">
             <legend class="visually-hidden">Calidad del bronce</legend>
             <label class="option-card option-card--text">
@@ -115,7 +119,7 @@
 
         <!-- IA: generado · Paso 3: forma y medidas -->
         <section class="quote-step" data-step="3" aria-labelledby="paso3-titulo">
-          <h2 class="quote-step__title" id="paso3-titulo">¿Qué medidas <span class="quote-step__subtitle">tendrá la pieza?</span></h2>
+          <h2 class="quote-step__title" id="paso3-titulo" tabindex="-1">¿Qué medidas <span class="quote-step__subtitle">tendrá la pieza?</span></h2>
           <fieldset class="form__group">
             <legend class="form__legend">Forma</legend>
             <div class="choice-row">
@@ -147,7 +151,7 @@
         <!-- IA: generado · Paso 4: número de piezas -->
         <section class="quote-step quote-step--product" data-step="4" aria-labelledby="paso4-titulo">
           <div class="quote-step__text">
-            <h2 class="quote-step__title" id="paso4-titulo" data-resumen-forma>Tu pieza</h2>
+            <h2 class="quote-step__title" id="paso4-titulo" tabindex="-1" data-resumen-forma>Tu pieza</h2>
             <p class="quote-step__detail" data-resumen-detalle>Completa los pasos anteriores</p>
             <div class="field">
               <label class="visually-hidden" for="cot-piezas">Número de piezas</label>
@@ -167,7 +171,7 @@
         <!-- IA: generado · Paso 5: resumen -->
         <section class="quote-step quote-step--product" data-step="5" aria-labelledby="paso5-titulo">
           <div class="quote-step__text">
-            <h2 class="quote-step__title" id="paso5-titulo" data-resumen-cantidad>Tus piezas</h2>
+            <h2 class="quote-step__title" id="paso5-titulo" tabindex="-1" data-resumen-cantidad>Tus piezas</h2>
             <p class="quote-step__detail" data-resumen-detalle>—</p>
           </div>
           <img class="quote-step__image" src="../assets/img/PROVISIONAL-barra-redonda.webp" alt="" width="123" height="252" data-resumen-imagen>
@@ -181,7 +185,7 @@
         <!-- IA: generado · Paso 6: precio -->
         <section class="quote-step quote-step--product" data-step="6" aria-labelledby="paso6-titulo">
           <div class="quote-step__text">
-            <h2 class="quote-step__title" id="paso6-titulo" data-resumen-cantidad>Tus piezas</h2>
+            <h2 class="quote-step__title" id="paso6-titulo" tabindex="-1" data-resumen-cantidad>Tus piezas</h2>
             <p class="quote-step__detail" data-resumen-detalle>—</p>
             <p class="quote-step__figure"><output data-cot-peso>X kg</output></p>
             <p class="quote-step__figure"><output data-cot-precio>$----</output> más IVA</p>
@@ -199,11 +203,12 @@
         <section class="quote-step confirmation" data-step="7" aria-labelledby="paso7-titulo">
           <img class="confirmation__logo" src="../assets/img/logo-mayco-company.webp" alt="" width="180" height="64">
           <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg>
-          <h2 class="confirmation__title" id="paso7-titulo">Pedido mandado correctamente</h2>
+          <h2 class="confirmation__title" id="paso7-titulo" tabindex="-1" data-confirmacion-titulo>Pedido mandado correctamente</h2>
           <img class="confirmation__image" src="../assets/img/confirmacion-erizo.webp" alt="Erizo saludando" width="160" height="235" loading="lazy">
           <div class="button-group">
             <a class="btn btn--secondary" href="../index.html">Volver al inicio</a>
             <a class="btn btn--primary" href="cotizacion.html">Nueva cotización</a>
+            <a class="btn btn--primary" href="carrito.html" data-ver-carrito hidden>Ver carrito</a>
           </div>
         </section>
       </form>
@@ -211,8 +216,12 @@
 
     <!-- IA: generado · Ayuda: se muestra al pulsar «Contacto» en cualquier paso -->
     <aside class="help-panel" id="ayuda-cotizacion" aria-labelledby="ayuda-titulo">
-      <div class="container">
-        <h2 class="help-panel__title" id="ayuda-titulo">¿Necesitas ayuda con tu cotización?</h2>
+      <div class="help-panel__box container">
+        <button class="help-panel__close" type="button" data-cerrar-ayuda hidden>
+          <span aria-hidden="true">×</span>
+          <span class="visually-hidden">Cerrar ayuda</span>
+        </button>
+        <h2 class="help-panel__title" id="ayuda-titulo" tabindex="-1">¿Necesitas ayuda con tu cotización?</h2>
         <p>Llámanos o escríbenos y dinos qué necesitas: forma de la pieza, calidad, medidas y cantidad.</p>
         <div class="button-group">
           <a class="btn btn--primary" href="tel:+520000000000">Llamar: [PLACEHOLDER: teléfono]</a>

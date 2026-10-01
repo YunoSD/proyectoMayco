@@ -988,7 +988,8 @@
   font-weight: var(--fw-bold);
 }
 
-/* Panel de ayuda del botón «Contacto» */
+/* Panel de ayuda del botón «Contacto»
+   Sin JS: bloque al final de la página. Con JS: ventana modal. */
 .help-panel {
   padding-block: var(--espacio-5);
   text-align: center;
@@ -1003,6 +1004,46 @@
 .help-panel p {
   max-width: var(--ancho-texto);
   margin: 0 auto var(--espacio-3);
+}
+
+.js .help-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: none;
+  place-items: center;
+  padding: var(--margen-lateral);
+  background-color: var(--color-velo);
+}
+
+.js .help-panel.is-open {
+  display: grid;
+}
+
+.js .help-panel__box {
+  position: relative;
+  width: min(100%, 36rem);
+  padding: var(--espacio-5) var(--espacio-3) var(--espacio-4);
+  background-color: var(--color-fondo);
+  border-radius: var(--radio-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.help-panel__close {
+  position: absolute;
+  top: var(--espacio-1);
+  right: var(--espacio-1);
+  width: var(--tactil-min);
+  height: var(--tactil-min);
+  font-size: var(--fs-h3);
+  line-height: 1;
+  background: none;
+  border: 0;
+  border-radius: var(--radio-boton);
+}
+
+.help-panel__close:hover {
+  background-color: var(--color-hover-oscuro);
 }
 
 /* ==========================================================
@@ -1390,6 +1431,12 @@
   background-color: var(--color-caja);
 }
 
+.cart-table__detail {
+  display: block;
+  font-size: var(--fs-pequeno);
+  color: var(--color-texto-suave);
+}
+
 .cart-table__qty {
   width: 5rem;
 }
@@ -1405,4 +1452,16 @@
 
 .cart__actions {
   justify-content: flex-end;
+}
+
+/* ==========================================================
+   ESTADO: oculto
+   Componentes con display propio que JavaScript oculta con [hidden].
+   El doble selector (clase + atributo) gana a la regla del componente.
+   ========================================================== */
+.btn[hidden],
+.steps[hidden],
+.cart__empty[hidden],
+.confirmation[hidden] {
+  display: none;
 }

@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/responsive.css">
+  <!-- main.js se carga sin defer para añadir la clase .js antes de pintar la página -->
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js" defer></script>
 </head>
 <body class="page page--user">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -43,7 +46,7 @@
       <div class="auth__panel">
         <!-- IA: generado · Log in -->
         <section class="auth-form is-active" id="login" aria-labelledby="login-titulo">
-          <h2 class="auth-form__title" id="login-titulo">Log in</h2>
+          <h2 class="auth-form__title" id="login-titulo" tabindex="-1">Log in</h2>
           <form class="form" data-login novalidate>
             <div class="field field--icon">
               <label class="visually-hidden" for="login-usuario">Usuario</label>
@@ -67,7 +70,7 @@
 
         <!-- IA: generado · Sign up -->
         <section class="auth-form" id="signup" aria-labelledby="signup-titulo">
-          <h2 class="auth-form__title" id="signup-titulo">Sign up</h2>
+          <h2 class="auth-form__title" id="signup-titulo" tabindex="-1">Sign up</h2>
           <form class="form" data-signup novalidate>
             <div class="field">
               <label class="field__label" for="signup-nombre">Nombre</label>

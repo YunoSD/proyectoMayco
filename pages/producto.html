@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/responsive.css">
+  <!-- main.js se carga sin defer para añadir la clase .js antes de pintar la página -->
+  <script src="../js/main.js"></script>
+  <script src="../js/productos.js" defer></script>
+  <script src="../js/producto.js" defer></script>
 </head>
 <body class="page page--producto">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -71,7 +75,7 @@
           <img class="product-step__brand" src="../assets/img/logo-osg-royco.webp" alt="OSG Royco" width="250" height="107">
           <article class="product-card">
             <p class="product-card__ref" data-producto-ref>List 341</p>
-            <h1 class="product-card__name" id="producto-nombre" data-producto-nombre>EXOCARB® VX Taps</h1>
+            <h1 class="product-card__name" id="producto-nombre" tabindex="-1" data-producto-nombre>EXOCARB® VX Taps</h1>
             <p class="product-card__desc" data-producto-desc>Carbide, Straight Flute, DIN, Overall Length, V-coating</p>
             <p class="product-card__price"><span data-producto-precio>$430</span> <abbr title="dólares estadounidenses">dlls</abbr></p>
             <ul class="product-card__meta">
@@ -95,7 +99,7 @@
       <!-- IA: generado · Paso 2: número de piezas y precio -->
       <section class="product-step" data-step="2" aria-labelledby="cantidad-titulo">
         <form class="product-step__main form" data-agregar-carrito novalidate>
-          <h2 class="section__title" id="cantidad-titulo">¿Cuántas piezas necesitas?</h2>
+          <h2 class="section__title" id="cantidad-titulo" tabindex="-1">¿Cuántas piezas necesitas?</h2>
           <div class="field">
             <label class="field__label" for="producto-piezas">Número de piezas</label>
             <input class="field__input" id="producto-piezas" name="piezas" type="number" min="1" max="30" step="1" value="1" inputmode="numeric" required aria-describedby="producto-piezas-error">
@@ -122,7 +126,7 @@
       <section class="product-step confirmation" data-step="3" aria-labelledby="agregado-titulo">
         <img class="confirmation__logo" src="../assets/img/logo-mayco-company.webp" alt="" width="180" height="64">
         <svg class="icon icon--xl" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg>
-        <h2 class="confirmation__title" id="agregado-titulo">Agregado al carrito</h2>
+        <h2 class="confirmation__title" id="agregado-titulo" tabindex="-1">Agregado al carrito</h2>
         <img class="confirmation__image" src="../assets/img/confirmacion-erizo.webp" alt="Erizo saludando" width="160" height="235" loading="lazy">
         <div class="button-group">
           <a class="btn btn--secondary" href="osgRoyco.html">Seguir comprando</a>

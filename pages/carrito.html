@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/responsive.css">
+  <!-- main.js se carga sin defer para añadir la clase .js antes de pintar la página -->
+  <script src="../js/main.js"></script>
+  <script src="../js/carrito.js" defer></script>
 </head>
 <body class="page page--carrito">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -59,7 +62,8 @@
 
   <main id="contenido" class="cart">
     <div class="container">
-      <h1 class="section__title">Carrito</h1>
+      <h1 class="section__title" tabindex="-1" data-cart-titulo>Carrito</h1>
+      <p class="visually-hidden" aria-live="polite" data-cart-aviso></p>
 
       <!-- IA: generado · Carrito vacío (sin captura en el diseño: propuesta) -->
       <div class="cart__empty" data-cart-empty>

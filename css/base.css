@@ -52,7 +52,9 @@ body {
   scroll-margin-top: calc(var(--header-alto) + var(--espacio-2));
 }
 
-/* El atributo hidden siempre oculta (los componentes no lo pisan) */
+/* El atributo hidden oculta. OJO: una clase que declare display (flex,
+   grid…) tiene la misma prioridad y lo anula; esos casos se refuerzan
+   al final de components.css («ESTADO: oculto»). */
 [hidden] {
   display: none;
 }

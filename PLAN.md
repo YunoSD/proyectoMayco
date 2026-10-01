@@ -35,7 +35,7 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 | D2 | Git | El repo ya existe (`github.com/YunoSD/proyectoMayco`). No se hace `git init`. Commits y push, a cargo del alumno. | Respuesta 2 |
 | D3 | Estructura del inicio | Cuatro tipos de sección, una debajo de otra: **(1)** acceso directo a un producto (OSG Royco) para verlo y comprar; **(2)** carrusel desplazable con 3–4 diapositivas y puntos; **(3)** secciones de servicio a pantalla completa (Maquinados, Fundición); **(4)** tarjetas (Stock / Pedidos). Después, el footer. | Respuesta 3 |
 | D4 | Imágenes | El alumno tiene las fotos originales y las pasará en un zip cuando se pidan (Fase 2). Hasta entonces se usan placeholders locales. | Respuesta 4 |
-| D5 | Tipografía | Libertad para elegir la más parecida. **Propuesta:** *Kumbh Sans* para titulares y cuerpo (geométrica, "g" de un piso, como en las capturas) y *Archivo* para botones y navegación. Ambas de Google Fonts. *Enlazadas en el HTML; el alumno decide al verlas con estilos en la Fase 3.* | Respuesta 5 y Prompt 03 |
+| D5 | Tipografía | Libertad para elegir la más parecida. **Propuesta:** *Kumbh Sans* para titulares y cuerpo (geométrica, "g" de un piso, como en las capturas) y *Archivo* para botones y navegación. Ambas de Google Fonts. **Aprobada.** | Respuesta 5 y Prompt 05 |
 | D6 | Forma de la pieza | Selector de forma (**Barra / Buje / Placa**) más un campo de medidas en pulgadas o mm que admite fracciones ("2 1/2 x 20"). Reglas: **Barra** → 2 valores (diámetro × largo); **Buje** → 3 valores (Ø exterior × Ø interior × largo), con Ø interior menor que Ø exterior; **Placa** → 3 valores (espesor × ancho × largo). **Aprobada.** | Respuesta 6 y Prompt 03 |
 | D7 | Precios del bronce | Precio fijo por kg según calidad, en MXN más IVA. **Aprobada:** SAE 62 → $230 · SAE 64 → $235 · SAE 65 → $235 · SAE 68 → $220 · SAE 660 → $230 · SAE 600 → $220. | Respuesta 7 y Prompt 03 |
 | D8 | Botón "Contacto" | Visible en todos los pasos de la cotización. Abre un panel con teléfono y correo. El enlace del correo se rellena con lo que el cliente ya ha elegido (forma, calidad, medidas y cantidad). Teléfono y correo son `[PLACEHOLDER]`. | Respuesta 8 |
@@ -52,7 +52,8 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 | D19 | Imágenes finales | Foto original del machuelo (horizontal para el inicio y el catálogo; girada en vertical para la ficha). El erizo sustituye al pato en el carrito vacío. | Prompt 04 |
 | D20 | Fuentes | No se pueden descargar desde el entorno de la IA (la red bloquea npm y Google Fonts), así que se cargan desde Google Fonts en el navegador del usuario. Las capturas de la IA salen con una fuente de reserva. | Fase 3 |
 | D21 | Sin JavaScript | La web funciona sin JS: el menú se ve siempre, el carrusel se desliza con scroll-snap y los pasos se muestran seguidos. Cuando `main.js` añade la clase `.js` a `<html>`, se activan el menú desplegable, las flechas y los puntos del carrusel, y un paso cada vez. | Fase 3 |
-
+| D22 | Revisión de la Fase 4 | Las 7 interacciones se programan de una vez y el alumno las revisa juntas, en lugar de parar tras cada una (como decía `agents/desarrollador-js.md`). | Prompt 05 |
+| D23 | Ajustes visuales | El alumno cambiará tamaños e imágenes al ver el producto final. | Prompt 05 |
 ---
 
 ## 4. Fases
@@ -61,7 +62,7 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 - [x] **Fase 1:** repositorio y documentación del proceso (`.gitignore`, `.gitattributes`, `PLAN.md`, `agents/`, `skills/`).
 - [x] **Fase 2:** HTML semántico de todas las páginas.
 - [x] **Fase 3:** CSS organizado, mobile-first.
-- [ ] **Fase 4:** JavaScript (menú, calculadora, cotización, catálogo, carrito, formularios).
+- [x] **Fase 4:** JavaScript (menú, calculadora, cotización, catálogo, carrito, formularios).
 - [ ] **Fase 5:** responsive a detalle (320 / 375 / 768 / 1024 / 1440).
 - [ ] **Fase 6:** README.md.
 
@@ -145,3 +146,26 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 - **Pendiente para la Fase 5 (responsive):** en móvil las flechas del carrusel tapan el título; las tablas de calidades se desplazan en horizontal dentro de su caja.
 - **Pendiente de revisión manual:** D5 (tipografía) al abrir la web en el navegador; comparar tamaños con Figma.
 - **Commit (lo hace el alumno):** `Fase 3: estilos CSS con tokens, componentes y versión móvil`. Hash: `[PLACEHOLDER]`.
+
+### Fase 4: JavaScript
+- **Fecha:** 2026-09-30
+- **Prompt:** [`docs/prompts/05-fase4-javascript.md`](docs/prompts/05-fase4-javascript.md)
+- **Qué generó la IA** (9 archivos en `js/`, sin librerías):
+  - `main.js`: clase `.js`, menú hamburguesa (aria-expanded, Esc, clic fuera, enlace), contador del carrito en el header y utilidades compartidas (dinero, carrito en localStorage, indicador de pasos, errores de campo).
+  - `carrusel.js`: flechas, puntos, teclado (← →), vuelta al principio. Sin avance automático.
+  - `bronce.js`: datos de calidades (precio D7 y densidad), lector de medidas (fracciones «2 1/2», «2-1/2», «2½», decimales con punto o coma, pulgadas o mm) y cálculo de peso de barra, buje y placa.
+  - `calculadora.js`: calculadora de fundición con la fórmula visible.
+  - `cotizacion.js`: flujo de 7 pasos con validación por paso, resumen, peso y precio, «Hacer pedido» / «Agregar al carrito» y panel de ayuda modal con el correo rellenado (D8).
+  - `productos.js` + `producto.js`: ficha por `?id=`, compra en 3 pasos, límite de existencias, `?paso=2` y «producto no encontrado».
+  - `carrito.js`: grupos USD y MXN (subtotal, IVA 16 % y total), cambiar cantidad, eliminar, persistencia y «Finalizar pedido».
+  - `auth.js`: cambio entre log in y sign up, validación con mensajes accesibles y «Recuérdame» (solo el usuario, nunca la contraseña).
+- **Comprobaciones de la IA:**
+  - 16 casos del lector de medidas y peso de referencia comprobado a mano (barra 4″ × 14″ SAE 62 = 25,14 kg).
+  - 42 pruebas automáticas en navegador (Chromium) de todos los flujos: 42/42 correctas y ningún error en consola.
+  - HTML regenerado: 0 problemas de ids, referencias ARIA, scripts o estilos. Sin `innerHTML` en el JS.
+- **Errores encontrados y corregidos por la IA durante la fase:**
+  - Con productos en el carrito seguía viéndose «Tu carrito está vacío». Causa: la regla del componente (`display: flex`) anulaba el atributo `hidden`, porque ambas tienen la misma prioridad. Solución: bloque «ESTADO: oculto» al final de `components.css`. Se verificó que ningún elemento con `hidden` se ve en las 9 páginas.
+  - Los ids de las cantidades del carrito incluían espacios y comillas del nombre del producto (id no válido). Ahora se generan con moneda + posición.
+- **Datos por verificar:** densidades del bronce en `bronce.js` (orientativas); existencias y plazos de los productos en `productos.js` (de ejemplo).
+- **Pendiente de revisión manual:** probar los flujos en tu navegador; revisar textos de los mensajes.
+- **Commit (lo hace el alumno):** `Fase 4: interacciones con JavaScript (menú, carrusel, calculadora, cotización, compra, carrito y cuenta)`. Hash: `[PLACEHOLDER]`.
