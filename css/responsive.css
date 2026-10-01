@@ -95,6 +95,76 @@
     right: 0;
   }
 
+  /* --- Rejillas de 4 elementos: 2 × 2 (evita 3 + 1 suelto) --- */
+  .card-grid--4,
+  .process,
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- Tablas: de tarjetas a tabla normal --- */
+  .data-table thead,
+  .cart-table thead {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
+
+  .data-table tr,
+  .cart-table tr {
+    display: table-row;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  .section:not(.section--alt) .data-table tr {
+    background-color: transparent;
+  }
+
+  .data-table th,
+  .data-table td,
+  .cart-table th,
+  .cart-table td {
+    display: table-cell;
+    padding: 0.75rem var(--espacio-2);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-borde);
+  }
+
+  .data-table td,
+  .data-table th {
+    vertical-align: top;
+  }
+
+  .data-table tbody th {
+    font-size: var(--fs-pequeno);
+    white-space: nowrap;
+  }
+
+  .data-table td[data-label]::before,
+  .cart-table td[data-label]::before {
+    content: none;
+  }
+
+  .data-table thead th,
+  .cart-table thead th {
+    font-family: var(--font-ui);
+    background-color: var(--color-caja);
+  }
+
+  .cart-table thead th {
+    font-size: var(--fs-pequeno);
+  }
+
+  /* --- Carrito: botones a la derecha --- */
+  .cart__actions {
+    justify-content: flex-end;
+  }
+
   /* --- Tarjetas Stock / Pedidos --- */
   .promo__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -182,6 +252,17 @@
    ========================================================== */
 @media (min-width: 1024px) {
 
+  /* --- Rejilla de servicios (6): 3 + 3 --- */
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* --- Rejillas de 4 elementos: en una fila --- */
+  .card-grid--4,
+  .process {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   /* --- Imagen y texto en dos columnas --- */
   .split {
     grid-template-columns: 1.2fr 1fr;
@@ -231,6 +312,11 @@
    DISEÑO · desde 1440 px
    ========================================================== */
 @media (min-width: 1440px) {
+
+  /* Los datos de la fundición caben en una fila sin partir palabras */
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
   .hero {
     padding-block: var(--espacio-6) var(--espacio-7);

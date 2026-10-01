@@ -28,6 +28,7 @@
     const fila = document.createElement('tr');
 
     const celdaProducto = document.createElement('td');
+    celdaProducto.className = 'cart-table__product';
     const nombre = document.createElement('strong');
     nombre.textContent = item.nombre;
     const detalle = document.createElement('span');
@@ -36,9 +37,11 @@
     celdaProducto.append(nombre, detalle);
 
     const celdaPrecio = document.createElement('td');
+    celdaPrecio.dataset.label = 'Precio';   // En móvil, la fila es una tarjeta con etiquetas (CSS)
     celdaPrecio.textContent = Mayco.dinero(item.precio, item.moneda);
 
     const celdaCantidad = document.createElement('td');
+    celdaCantidad.dataset.label = 'Cantidad';
     const etiqueta = document.createElement('label');
     etiqueta.className = 'visually-hidden';
     etiqueta.htmlFor = idCampo;
@@ -56,9 +59,11 @@
     celdaCantidad.append(etiqueta, cantidad);
 
     const celdaSubtotal = document.createElement('td');
+    celdaSubtotal.dataset.label = 'Subtotal';
     celdaSubtotal.textContent = Mayco.dinero(item.precio * item.cantidad, item.moneda);
 
     const celdaEliminar = document.createElement('td');
+    celdaEliminar.className = 'cart-table__actions';
     const eliminar = document.createElement('button');
     eliminar.className = 'cart-table__remove';
     eliminar.type = 'button';

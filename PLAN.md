@@ -54,6 +54,8 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 | D21 | Sin JavaScript | La web funciona sin JS: el menú se ve siempre, el carrusel se desliza con scroll-snap y los pasos se muestran seguidos. Cuando `main.js` añade la clase `.js` a `<html>`, se activan el menú desplegable, las flechas y los puntos del carrusel, y un paso cada vez. | Fase 3 |
 | D22 | Revisión de la Fase 4 | Las 7 interacciones se programan de una vez y el alumno las revisa juntas, en lugar de parar tras cada una (como decía `agents/desarrollador-js.md`). | Prompt 05 |
 | D23 | Ajustes visuales | El alumno cambiará tamaños e imágenes al ver el producto final. | Prompt 05 |
+| D24 | Datos de prueba | Todos los datos de ejemplo (contacto, precios, densidades, productos, existencias) y las funciones simuladas (login, pedidos) se listan en `docs/datos-de-prueba.md`. El footer de todas las páginas avisa: «Proyecto académico: precios, existencias, datos de contacto y pedidos son de prueba». | Prompt 06 |
+| D25 | Fase extra | Antes del README, nueva Fase 6: la IA pregunta página por página qué cambiar y lo aplica. | Prompt 06 |
 ---
 
 ## 4. Fases
@@ -63,8 +65,9 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 - [x] **Fase 2:** HTML semántico de todas las páginas.
 - [x] **Fase 3:** CSS organizado, mobile-first.
 - [x] **Fase 4:** JavaScript (menú, calculadora, cotización, catálogo, carrito, formularios).
-- [ ] **Fase 5:** responsive a detalle (320 / 375 / 768 / 1024 / 1440).
-- [ ] **Fase 6:** README.md.
+- [x] **Fase 5:** responsive a detalle (320 / 375 / 768 / 1024 / 1440).
+- [ ] **Fase 6:** ajustes del alumno página por página (botones, orden, tamaños, imágenes y textos). *Añadida en el Prompt 06.*
+- [ ] **Fase 7:** README.md.
 
 ---
 
@@ -169,3 +172,33 @@ La web se hace con apoyo de IA, partiendo del diseño de Figma de la PEC 3, para
 - **Datos por verificar:** densidades del bronce en `bronce.js` (orientativas); existencias y plazos de los productos en `productos.js` (de ejemplo).
 - **Pendiente de revisión manual:** probar los flujos en tu navegador; revisar textos de los mensajes.
 - **Commit (lo hace el alumno):** `Fase 4: interacciones con JavaScript (menú, carrusel, calculadora, cotización, compra, carrito y cuenta)`. Hash: `[PLACEHOLDER]`.
+
+### Fase 5: Responsive a detalle
+- **Fecha:** 2026-10-01
+- **Prompt:** [`docs/prompts/06-fase5-responsive.md`](docs/prompts/06-fase5-responsive.md)
+- **Cómo se revisó:**
+  - Un script recorre 15 escenarios × 5 anchos (75 combinaciones), con JavaScript activo. Los escenarios incluyen los pasos de la cotización, la ventana de ayuda, el carrito con y sin productos, el menú abierto y log in / sign up.
+  - En cada combinación comprueba scroll horizontal, elementos fuera de pantalla, áreas táctiles < 44 px, texto desbordado, imágenes deformadas, letra < 12 px, header que tapa el contenido y foco visible al tabular.
+  - Además, capturas a 320, 768, 1024 y 1440 px de todas las páginas, revisadas a ojo, y medición de cuántos elementos hay por fila en cada rejilla.
+- **Tabla de revisión** (✔ = sin fallos; las celdas con texto indican el fallo y la corrección):
+
+| Página | 320 | 375 | 768 | 1024 | 1440 |
+|---|---|---|---|---|---|
+| Todas | Enlace «Saltar al contenido» de 41 px de alto → mínimo 44 px | igual | igual | igual | igual |
+| Inicio | Flechas del carrusel encima del título → movidas a la fila de los puntos | igual | ✔ | ✔ | ✔ |
+| Maquinados | Etiquetas de materiales (enlaces) de 33 px → 44 px | igual | igual | igual | igual + servicios en 4 + 2 → 3 + 3 desde 1024 |
+| Fundición | Tabla de calidades con desplazamiento lateral → tarjetas | igual | Tipos de bronce 3 + 1 → 2 × 2; «[PLACEHOLDER]» partido → datos en 2 × 2 | Proceso 3 + 1 → 4 en fila; datos 2 × 2 | ✔ (datos en 4 en fila) |
+| Cotización | Botón «Contacto» de 36 px → 44 px | igual | igual | igual | igual |
+| OSG Royco | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Producto | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Aceros | Tabla de aceros con desplazamiento lateral → tarjetas | igual | Plásticos 3 + 1 → 2 × 2 | ✔ | ✔ |
+| Mi cuenta | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Carrito | **Scroll horizontal de toda la página** (etiquetas ocultas con `position: absolute` escapaban de la caja de la tabla) → caja con `position: relative` + filas como tarjetas; botones centrados | igual | ✔ | ✔ | ✔ |
+
+- **Falsos positivos del script** (revisados y sin cambios):
+  - Nombres de producto del catálogo de 24 px de alto: toda la tarjeta es la zona de clic.
+  - Formas cromadas del login fuera de pantalla: decorativas y recortadas por su caja; no hay scroll.
+  - «Main bajo el header» con la ventana de ayuda abierta en móvil: la página se había desplazado al pulsar «Contacto».
+- **Resultado final:** 0 fallos en las 75 combinaciones y 42/42 pruebas de funcionamiento correctas.
+- **Aprendizaje añadido a `skills/responsive.md`:** puntos 8 (tablas como tarjetas), 9 (rejillas sin elementos sueltos) y 10 (elementos ocultos y `position: relative`).
+- **Commit (lo hace el alumno):** `Fase 5: responsive a detalle y documento de datos de prueba`. Hash: `[PLACEHOLDER]`.

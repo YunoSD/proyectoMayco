@@ -21,7 +21,10 @@
    - Login/signup: el panel azul ocupa el 100 % y la ilustración se reduce o se oculta.
    - Carrito: la tabla se convierte en tarjetas apiladas.
    - Footer: enlaces en columna.
-8. Comprobar en las herramientas de desarrollo del navegador a 320, 375, 768, 1024 y 1440 px.
+8. **Tablas:** en móvil, cada fila es una tarjeta y cada celda muestra su encabezado con `data-label` y `td::before { content: attr(data-label) }`. Desde 768 px vuelven a ser tabla. Así no hay desplazamiento lateral.
+9. **Rejillas con un número fijo de elementos** (4 pasos, 4 datos, 6 servicios): fijar las columnas en cada breakpoint (2 × 2, 4 en fila, 3 + 3) en lugar de `auto-fit`, para que no quede un elemento suelto (3 + 1).
+10. **Elementos ocultos con `position: absolute`** (`.visually-hidden`) dentro de una caja con `overflow`: la caja necesita `position: relative`, o se escapan y crean scroll horizontal.
+11. Comprobar en las herramientas de desarrollo del navegador a 320, 375, 768, 1024 y 1440 px.
 
 ## Checklist de verificación
 - [ ] No hay scroll horizontal en ningún ancho (`document.documentElement.scrollWidth <= innerWidth`).

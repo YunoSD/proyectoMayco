@@ -158,6 +158,9 @@ hr {
 /* Enlace «Saltar al contenido»: aparece al recibir el foco */
 .skip-link {
   position: absolute;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tactil-min);
   top: var(--espacio-1);
   left: var(--espacio-1);
   z-index: 200;

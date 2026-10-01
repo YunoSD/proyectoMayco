@@ -142,7 +142,6 @@
 
 /* Contacto: pequeño, en cada paso de la cotización */
 .btn--contact {
-  min-height: 2.25rem;
   padding: 0.25rem var(--espacio-2);
   font-size: var(--fs-cuerpo);
   font-weight: var(--fw-bold);
@@ -381,7 +380,7 @@
 
 .js .carousel__arrow {
   position: absolute;
-  top: 13rem;
+  top: calc(26rem + var(--espacio-3) + var(--tactil-min) / 2);   /* Fila de los puntos */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -397,11 +396,11 @@
 }
 
 .js .carousel__arrow--prev {
-  left: var(--espacio-1);
+  left: 0;
 }
 
 .js .carousel__arrow--next {
-  right: var(--espacio-1);
+  right: 0;
 }
 
 .js .carousel__dots {
@@ -526,8 +525,11 @@
 }
 
 .tag-list__item a {
-  display: inline-block;
-  padding-block: 0.25rem;
+  display: flex;
+  align-items: center;
+  min-height: var(--tactil-min);
+  margin: calc(-1 * var(--espacio-1)) calc(-1 * var(--espacio-2));
+  padding-inline: var(--espacio-2);
 }
 
 /* ==========================================================
@@ -590,15 +592,42 @@
 
 /* ==========================================================
    COMPONENTE: Tabla de datos (calidades de bronce y acero)
+   Móvil: cada fila es una tarjeta y cada celda muestra su etiqueta
+   (atributo data-label). Desde 768 px: tabla normal (responsive.css).
    ========================================================== */
 .table-wrapper {
-  overflow-x: auto;
+  position: relative;   /* Contiene las etiquetas ocultas de las celdas */
 }
 
 .data-table {
-  min-width: 36rem;
   font-size: var(--fs-pequeno);
   text-align: left;
+}
+
+.data-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.data-table tr {
+  display: grid;
+  gap: 0.25rem;
+  margin-bottom: var(--espacio-2);
+  padding: var(--espacio-2);
+  background-color: var(--color-fondo);
+  border-radius: var(--radio-tarjeta);
+}
+
+.section:not(.section--alt) .data-table tr {
+  background-color: var(--color-superficie);
+}
+
+.data-table td[data-label]::before {
+  content: attr(data-label) ": ";
+  font-weight: var(--fw-bold);
 }
 
 .data-table__caption {
@@ -608,20 +637,13 @@
   text-align: left;
 }
 
-.data-table th,
-.data-table td {
-  padding: 0.75rem var(--espacio-2);
-  vertical-align: top;
-  border-bottom: 1px solid var(--color-borde);
+.data-table tbody th {
+  font-size: var(--fs-grande);
 }
 
 .data-table thead th {
   font-family: var(--font-ui);
   background-color: var(--color-caja);
-}
-
-.data-table tbody th {
-  white-space: nowrap;
 }
 
 /* Nota pequeña bajo tablas y formularios */
@@ -1414,21 +1436,48 @@
 }
 
 .cart-table {
-  min-width: 36rem;
   text-align: left;
 }
 
-.cart-table th,
-.cart-table td {
-  padding: 0.75rem var(--espacio-1);
-  vertical-align: middle;
+/* Móvil: cada artículo es una tarjeta (tabla normal desde 768 px) */
+.cart-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.cart-table tr {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--espacio-1) var(--espacio-2);
+  padding-block: var(--espacio-2);
   border-bottom: 1px solid var(--color-borde);
 }
 
-.cart-table thead th {
-  font-family: var(--font-ui);
+.cart-table__product {
+  grid-column: 1 / -1;
+}
+
+.cart-table td[data-label] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-1);
+  grid-column: 1 / -1;
+}
+
+.cart-table td[data-label]::before {
+  content: attr(data-label);
   font-size: var(--fs-pequeno);
-  background-color: var(--color-caja);
+  color: var(--color-texto-suave);
+}
+
+.cart-table__actions {
+  grid-column: 1 / -1;
+  justify-self: end;
 }
 
 .cart-table__detail {
@@ -1451,7 +1500,7 @@
 }
 
 .cart__actions {
-  justify-content: flex-end;
+  margin-top: var(--espacio-3);
 }
 
 /* ==========================================================

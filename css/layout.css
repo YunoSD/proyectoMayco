@@ -215,6 +215,14 @@
   text-align: center;
 }
 
+/* Aviso de datos de prueba (ver docs/datos-de-prueba.md) */
+.site-footer__aviso {
+  margin-top: var(--espacio-1);
+  font-size: var(--fs-mini);
+  color: var(--color-texto-suave);
+  text-align: center;
+}
+
 /* ==========================================================
    SECCIONES GENÉRICAS
    ========================================================== */
